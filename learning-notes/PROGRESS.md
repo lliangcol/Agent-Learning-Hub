@@ -6,26 +6,24 @@
 
 - Roadmap source: `README.md` -> `Learning Todo List`
 - Stage: Stage 0 - Understand What An Agent Is
-- Current item: OpenAI - A practical guide to building agents
-- Status: waiting for checkpoint answer
+- Current item: Stage 0 output - one-page note
+- Status: waiting for stage output
 - Detail note: `learning-notes/stage-0-agent-basics.md`
-- Resume anchor: `学习卡片：OpenAI - A practical guide to building agents`
-- Last updated: 2026-06-08
+- Resume anchor: `## 下一步`
+- Last updated: 2026-06-12
 
 ## 下次从这里开始
 
 1. 先打开本文件确认当前学习位置。
 2. 打开 `learning-notes/stage-0-agent-basics.md`。
-3. 定位到 `学习卡片：OpenAI - A practical guide to building agents`。
-4. 让用户回答下面 4 个检查题。
-5. 校对并修正用户回答后，再把 OpenAI 阅读项标记为完成。
+3. 定位到 `## 下一步`。
+4. 让用户完成 Stage 0 阶段产出：写一页短笔记，回答「我的场景为什么需要 agent，而不是普通 workflow？」。
+5. 校对并修正阶段产出后，再决定是否进入 Stage 1。
 
-## 待回答检查题
+## 待完成任务
 
-- 用你自己的话说，OpenAI 为什么认为 agent 不等于普通 chatbot 或单次 LLM 调用？
-- 如果要做一个“资料整理助手”，它的 model、tools、instructions 分别应该包含什么？
-- 对这个资料整理助手，你会设计哪 3 条 guardrails？哪些动作必须 human oversight？
-- 你会怎么设计一个最小 eval，证明这个 agent 比普通 workflow 更值得做？
+- 写一页短笔记，回答「我的场景为什么需要 agent，而不是普通 workflow？」。
+- 笔记需要包含：目标场景、为什么 workflow 不够、agent 需要哪些工具、边界/guardrails、最小 eval。
 
 ## 完成规则
 
