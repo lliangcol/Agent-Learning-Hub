@@ -5,25 +5,27 @@
 ## 当前学习位置
 
 - Roadmap source: `README.md` -> `Learning Todo List`
-- Stage: Stage 0 - Understand What An Agent Is
-- Current item: Stage 0 output - one-page note
-- Status: waiting for stage output
-- Detail note: `learning-notes/stage-0-agent-basics.md`
+- Stage: Stage 1 - Build A Minimal Agent Loop
+- Current item: Stage 1 task 1 - ordinary LLM API chat
+- Status: waiting for API provider/key or mock choice
+- Detail note: `learning-notes/stage-1-minimal-agent-loop.md`
 - Resume anchor: `## 下一步`
 - Last updated: 2026-06-12
 
 ## 下次从这里开始
 
 1. 先打开本文件确认当前学习位置。
-2. 打开 `learning-notes/stage-0-agent-basics.md`。
+2. 打开 `learning-notes/stage-1-minimal-agent-loop.md`。
 3. 定位到 `## 下一步`。
-4. 让用户完成 Stage 0 阶段产出：写一页短笔记，回答「我的场景为什么需要 agent，而不是普通 workflow？」。
-5. 校对并修正阶段产出后，再决定是否进入 Stage 1。
+4. 继续 Stage 1 第一个任务：用一个 LLM API 完成普通对话。
+5. 当前常见 API key 均未配置；先决定使用 OpenAI、Claude、Gemini 或本地 mock。
 
 ## 待完成任务
 
-- 写一页短笔记，回答「我的场景为什么需要 agent，而不是普通 workflow？」。
-- 笔记需要包含：目标场景、为什么 workflow 不够、agent 需要哪些工具、边界/guardrails、最小 eval。
+- 选择 API provider，或决定先用本地 mock。
+- 如果使用真实 API，配置对应环境变量。
+- 完成一次普通 LLM API 对话调用。
+- 记录使用的模型/API、运行命令、示例输入和示例输出。
 
 ## 完成规则
 

@@ -10,6 +10,7 @@
 
 - [Learning Progress](PROGRESS.md)
 - [Stage 0: Agent 基础概念](stage-0-agent-basics.md)
+- [Stage 1: Build A Minimal Agent Loop](stage-1-minimal-agent-loop.md)
 - [阶段笔记模板](templates/stage-note-template.md)
 
 ## 文件分工
