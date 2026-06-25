@@ -5,27 +5,28 @@
 ## 当前学习位置
 
 - Roadmap source: `README.md` -> `Learning Todo List`
-- Stage: Stage 1 - Build A Minimal Agent Loop
-- Current item: Stage 1 task 1 - ordinary LLM API chat
-- Status: waiting for API provider/key or mock choice
-- Detail note: `learning-notes/stage-1-minimal-agent-loop.md`
-- Resume anchor: `## 下一步`
-- Last updated: 2026-06-12
+- Stage: Stage 2 - Learn Tool Use, RAG, And Memory
+- Current item: Stage 2 task 1 - 检索增强生成（RAG）
+- Status: ready to start
+- Detail note: 待创建 `learning-notes/stage-2-tool-use-rag-memory.md`
+- Resume anchor: Stage 2 第一个任务
+- Last updated: 2026-06-25
 
 ## 下次从这里开始
 
 1. 先打开本文件确认当前学习位置。
-2. 打开 `learning-notes/stage-1-minimal-agent-loop.md`。
-3. 定位到 `## 下一步`。
-4. 继续 Stage 1 第一个任务：用一个 LLM API 完成普通对话。
-5. 当前常见 API key 均未配置；先决定使用 OpenAI、Claude、Gemini 或本地 mock。
+2. Stage 1 已全部完成，代码在 `stage-1/`。
+3. 创建 `learning-notes/stage-2-tool-use-rag-memory.md`，从模板开始。
+4. 继续 Stage 2 第一个任务：检索增强生成（chunk、embed、retrieve、answer with citations）。
 
 ## 待完成任务
 
-- 选择 API provider，或决定先用本地 mock。
-- 如果使用真实 API，配置对应环境变量。
-- 完成一次普通 LLM API 对话调用。
-- 记录使用的模型/API、运行命令、示例输入和示例输出。
+- 创建 Stage 2 笔记文件。
+- Stage 2 Task 1：检索增强生成（RAG）。
+- Stage 2 Task 2：把搜索、数据库、文件、浏览器、代码执行接成工具。
+- Stage 2 Task 3：区分短期上下文、会话记忆、长期记忆。
+- Stage 2 Task 4：处理工具失败、空结果、重复调用、幻觉引用。
+- Stage 2 Task 5：让 agent 在回答里给出来源或证据。
 
 ## 完成规则
 
