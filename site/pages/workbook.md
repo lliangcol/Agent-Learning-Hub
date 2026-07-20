@@ -14,7 +14,7 @@ description: 本地进度、笔记与 V1 数据迁移
     <button type="button" data-progress-export>导出 V2 JSON</button>
     <button type="button" data-v1-export>导出当前 origin 的 V1 JSON</button>
     <button type="button" data-progress-rollback>恢复最近导入备份</button>
-    <label class="file-button">选择 V1/V2 JSON<input type="file" accept="application/json" data-progress-import></label>
+    <label class="file-button">选择 V1/V2 JSON<input type="file" accept="application/json" data-progress-import disabled></label>
   </div>
   <p data-v1-summary role="status"></p>
   <p data-progress-rollback-status role="status" aria-live="polite"></p>

@@ -46,7 +46,7 @@
       state,
       updated_at: new Date().toISOString(),
       evidence_paths: [],
-      review: "浏览器记录，需补证据",
+      review: "需补证据",
       environment: navigator.userAgent,
       next_anchor: "补充 Lab 证据",
     };

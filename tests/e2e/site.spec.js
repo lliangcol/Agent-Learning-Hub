@@ -27,7 +27,9 @@ test("note preview neutralizes executable Markdown", async ({ page }) => {
 
 test("V1 import previews, reconciles, replaces once and rolls back", async ({ page }) => {
   await page.goto("pages/workbook/");
-  await page.locator("[data-progress-import]").setInputFiles({
+  const importer = page.locator("[data-progress-import]");
+  await expect(importer).toBeEnabled();
+  await importer.setInputFiles({
     name: "v1-progress.json",
     mimeType: "application/json",
     buffer: Buffer.from(

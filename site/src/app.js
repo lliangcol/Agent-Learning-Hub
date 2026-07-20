@@ -131,12 +131,13 @@
       (legacy.state ? 1 : 0) + Object.keys(legacy.notes).length + (legacy.theme ? 1 : 0);
     panel.querySelector("[data-v1-summary]").textContent =
       legacyCount > 0
-        ? `当前 origin 检测到 ${legacyCount} 组 V1 数据；请先导出再迁移。`
-        : "当前 origin 未检测到 V1 数据。";
+        ? `origin 有 ${legacyCount} 组 V1 数据；先导出再迁移。`
+        : "origin 无 V1 数据";
     panel.querySelector("[data-v1-export]").addEventListener("click", () => {
       downloadJson(collectLegacyData(), "agent-learning-hub-v1");
     });
-    panel.querySelector("[data-progress-import]").addEventListener("change", async (event) => {
+    const picker = panel.querySelector("[data-progress-import]");
+    picker.addEventListener("change", async (event) => {
       error.textContent = "";
       try {
         const file = event.target.files[0];
@@ -157,6 +158,7 @@
         error.textContent = caught instanceof Error ? caught.message : "导入失败。";
       }
     });
+    picker.disabled = false;
     panel.querySelector("[data-import-confirm]").addEventListener("click", () => {
       if (!pendingImport) return;
       ALHProgress.atomicReplace(pendingImport.output);
@@ -181,13 +183,13 @@
     });
     notePanel.querySelector("[data-note-save]").addEventListener("click", () => {
       ALHNotes.saveNote(input.value);
-      status.textContent = "笔记已保存到当前浏览器。";
+      status.textContent = "已保存";
     });
     notePanel.querySelector("[data-note-delete]").addEventListener("click", () => {
       localStorage.removeItem(ALHNotes.NOTES_KEY);
       input.value = "";
       output.replaceChildren();
-      status.textContent = "本地笔记已删除。";
+      status.textContent = "笔记已删除。";
     });
   }
 
