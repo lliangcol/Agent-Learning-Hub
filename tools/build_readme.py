@@ -125,7 +125,9 @@ def main() -> int:
             return 1
         print("README.md is up to date.")
         return 0
-    path.write_text(output, encoding="utf-8")
+    if path.exists() and path.read_text(encoding="utf-8") == output:
+        return 0
+    path.write_text(output, encoding="utf-8", newline="\n")
     return 0
 
 

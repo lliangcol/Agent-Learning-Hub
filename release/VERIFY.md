@@ -27,6 +27,7 @@ uv run pytest tests/unit/test_calculator.py tests/unit/test_registry_and_policie
 uv run python tools/build_site_content.py
 npm run build
 git diff --exit-code -- README.md site/generated
+uv run python tools/check_worktree_clean.py
 uv run mkdocs build --strict
 uv run python tools/check_site_budget.py
 npx playwright install chromium

@@ -96,6 +96,7 @@ jobs:
           uv run python tools/build_site_content.py
           npm run build
           git diff --exit-code -- README.md site/generated
+          uv run python tools/check_worktree_clean.py
       - name: Build and budget
         run: |
           uv run mkdocs build --strict

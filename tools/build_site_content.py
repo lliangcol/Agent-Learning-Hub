@@ -146,8 +146,10 @@ def main() -> int:
             if not path.exists() or path.read_text(encoding="utf-8") != content:
                 failed.append(path)
         else:
+            if path.exists() and path.read_text(encoding="utf-8") == content:
+                continue
             path.parent.mkdir(parents=True, exist_ok=True)
-            path.write_text(content, encoding="utf-8")
+            path.write_text(content, encoding="utf-8", newline="\n")
     if failed:
         for path in failed:
             print(f"out of date: {path.relative_to(ROOT)}", file=sys.stderr)

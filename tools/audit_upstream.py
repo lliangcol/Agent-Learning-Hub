@@ -216,7 +216,7 @@ def main() -> int:
     )
     output = args.output if args.output.is_absolute() else ROOT / args.output
     output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    output.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
     print(f"Wrote {output.relative_to(ROOT)}")
     return 0
 

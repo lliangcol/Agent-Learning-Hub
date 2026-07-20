@@ -156,6 +156,7 @@ def update_catalog(results: list[LinkResult]) -> None:
     CATALOG.write_text(
         yaml.safe_dump(catalog, allow_unicode=True, sort_keys=False, width=1000),
         encoding="utf-8",
+        newline="\n",
     )
 
 

@@ -220,7 +220,11 @@ def parse_projects(text: str) -> list[dict[str, object]]:
 
 def write_yaml(path: Path, data: object) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(yaml.safe_dump(data, allow_unicode=True, sort_keys=False), encoding="utf-8")
+    path.write_text(
+        yaml.safe_dump(data, allow_unicode=True, sort_keys=False),
+        encoding="utf-8",
+        newline="\n",
+    )
 
 
 def main() -> None:
