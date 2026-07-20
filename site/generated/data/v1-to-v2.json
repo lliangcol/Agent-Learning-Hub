@@ -1,0 +1,301 @@
+{
+  "schema_version": "1.0.0",
+  "task_mappings": [
+    {
+      "old_id": "V1-S0-T01",
+      "new_id": "S00-T01",
+      "was_checked": true
+    },
+    {
+      "old_id": "V1-S0-T02",
+      "new_id": "S00-T02",
+      "was_checked": true
+    },
+    {
+      "old_id": "V1-S0-T03",
+      "new_id": "S00-T03",
+      "was_checked": true
+    },
+    {
+      "old_id": "V1-S0-T04",
+      "new_id": "S00-T04",
+      "was_checked": true
+    },
+    {
+      "old_id": "V1-S0-T05",
+      "new_id": "S00-T05",
+      "was_checked": true
+    },
+    {
+      "old_id": "V1-S1-T01",
+      "new_id": "S01-T01",
+      "was_checked": true
+    },
+    {
+      "old_id": "V1-S1-T02",
+      "new_id": "S01-T02",
+      "was_checked": true
+    },
+    {
+      "old_id": "V1-S1-T03",
+      "new_id": "S01-T03",
+      "was_checked": true
+    },
+    {
+      "old_id": "V1-S1-T04",
+      "new_id": "S02-T01",
+      "was_checked": true
+    },
+    {
+      "old_id": "V1-S1-T05",
+      "new_id": "S02-T02",
+      "was_checked": true
+    },
+    {
+      "old_id": "V1-S1-T06",
+      "new_id": "S02-T03",
+      "was_checked": true
+    },
+    {
+      "old_id": "V1-S2-T01",
+      "new_id": "S03-T01",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S2-T02",
+      "new_id": "S04-T01",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S2-T03",
+      "new_id": "S03-T02",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S2-T04",
+      "new_id": "S04-T02",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S2-T05",
+      "new_id": "S03-T03",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S3-T01",
+      "new_id": "S05-T01",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S3-T02",
+      "new_id": "S05-T02",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S3-T03",
+      "new_id": "S05-T03",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S3-T04",
+      "new_id": "S05-T04",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S3-T05",
+      "new_id": "S05-T05",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S4-T01",
+      "new_id": "S08-T01",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S4-T02",
+      "new_id": "S08-T02",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S4-T03",
+      "new_id": "S08-T03",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S4-T04",
+      "new_id": "S08-T04",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S4-T05",
+      "new_id": "S08-T05",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S5-T01",
+      "new_id": "S06-T01",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S5-T02",
+      "new_id": "S06-T02",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S5-T03",
+      "new_id": "S06-T03",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S5-T04",
+      "new_id": "S06-T04",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S5-T05",
+      "new_id": "S06-T05",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S5-T06",
+      "new_id": "S06-T06",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S5-T07",
+      "new_id": "S06-T07",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S5-T08",
+      "new_id": "S06-T08",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S6-T01",
+      "new_id": "S07-T01",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S6-T02",
+      "new_id": "S07-T02",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S6-T03",
+      "new_id": "S07-T03",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S6-T04",
+      "new_id": "S07-T04",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S6-T05",
+      "new_id": "S07-T05",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S7-T01",
+      "new_id": "S04-T03",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S7-T02",
+      "new_id": "S04-T04",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S7-T03",
+      "new_id": "S04-T05",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S7-T04",
+      "new_id": "S04-T06",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S7-T05",
+      "new_id": "S04-T07",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S7-T06",
+      "new_id": "S04-T08",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S8-T01",
+      "new_id": "S09-T01",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S8-T02",
+      "new_id": "S09-T02",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S8-T03",
+      "new_id": "S09-T03",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S8-T04",
+      "new_id": "S09-T04",
+      "was_checked": false
+    },
+    {
+      "old_id": "V1-S8-T05",
+      "new_id": "S09-T05",
+      "was_checked": false
+    }
+  ],
+  "project_mappings": [
+    {
+      "old_id": "V1-P01",
+      "new_id": "P01"
+    },
+    {
+      "old_id": "V1-P02",
+      "new_id": "P02"
+    },
+    {
+      "old_id": "V1-P03",
+      "new_id": "P03"
+    },
+    {
+      "old_id": "V1-P04",
+      "new_id": "P04"
+    },
+    {
+      "old_id": "V1-P05",
+      "new_id": "P05"
+    },
+    {
+      "old_id": "V1-P06",
+      "new_id": "P06"
+    },
+    {
+      "old_id": "V1-P07",
+      "new_id": "P07"
+    },
+    {
+      "old_id": "V1-P08",
+      "new_id": "P08"
+    },
+    {
+      "old_id": "V1-P09",
+      "new_id": "P09"
+    },
+    {
+      "old_id": "V1-P10",
+      "new_id": "P10"
+    },
+    {
+      "old_id": "V1-P11",
+      "new_id": "P11"
+    }
+  ]
+}

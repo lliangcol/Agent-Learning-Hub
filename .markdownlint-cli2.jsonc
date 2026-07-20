@@ -1,0 +1,17 @@
+{
+  "config": {
+    "MD012": false,
+    "MD013": false,
+    "MD024": { "siblings_only": true },
+    "MD025": false,
+    "MD033": false,
+    "MD034": false,
+    "MD041": false
+  },
+  "ignores": [
+    ".venv/**",
+    "node_modules/**",
+    "site-build/**",
+    "workbook/archive/legacy-v1/**"
+  ]
+}

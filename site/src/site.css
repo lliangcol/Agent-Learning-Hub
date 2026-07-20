@@ -1,0 +1,113 @@
+:root {
+  --alh-focus: #f5a524;
+}
+
+.md-tabs__link {
+  color: #fff;
+  opacity: 0.9;
+}
+
+.md-footer-meta .md-copyright,
+.md-footer-meta .md-copyright a {
+  color: #bdbdbd;
+}
+
+.md-content p a,
+.md-content li a {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.md-typeset button,
+.file-button {
+  min-height: 2.6rem;
+  padding: 0.55rem 0.9rem;
+  border: 0;
+  border-radius: 0.4rem;
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.md-typeset button:focus-visible,
+.md-typeset a:focus-visible,
+.md-typeset input:focus-visible,
+.md-typeset textarea:focus-visible,
+.file-button:focus-within {
+  outline: 3px solid var(--alh-focus);
+  outline-offset: 3px;
+}
+
+.task-list,
+.project-list {
+  display: grid;
+  gap: 0.6rem;
+  padding: 0;
+  list-style: none;
+}
+
+.progress-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.45rem;
+}
+
+.progress-item input {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex: 0 0 auto;
+}
+
+.workbook-panel {
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.65rem;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0.8rem 0;
+}
+
+.file-button input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+[data-note-input] {
+  width: 100%;
+  font: 0.9rem/1.6 ui-monospace, monospace;
+}
+
+.note-output {
+  min-height: 3rem;
+  padding: 0.8rem;
+  border: 1px dashed var(--md-default-fg-color--lightest);
+}
+
+.error {
+  color: #b42318;
+  font-weight: 700;
+}
+
+@media (max-width: 360px) {
+  .md-content__inner {
+    margin: 0 0.4rem;
+  }
+
+  .button-row > * {
+    width: 100%;
+    text-align: center;
+  }
+}

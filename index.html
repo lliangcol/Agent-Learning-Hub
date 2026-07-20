@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    >
+    <meta name="referrer" content="no-referrer">
+    <title>Agent Learning Hub V1 数据迁移</title>
+    <link rel="stylesheet" href="site/src/legacy-migration.css">
+    <script src="site/src/legacy-migration.js" type="module"></script>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">Agent Learning Hub</p>
+      <h1>V1 数据迁移入口</h1>
+      <p>
+        旧单文件学习站点已经停止运行，以消除未净化 Markdown、远程 CDN 和内联事件带来的风险。
+        此页面不会覆盖或删除旧 localStorage 数据。
+      </p>
+      <section aria-labelledby="data-title">
+        <h2 id="data-title">导出当前 origin 的旧数据</h2>
+        <p id="origin"></p>
+        <p id="summary" role="status" aria-live="polite"></p>
+        <button id="export" type="button">导出 V1 JSON</button>
+        <p class="privacy">导出文件可能包含个人笔记，只保存在你选择的位置，不要提交到仓库。</p>
+      </section>
+      <section aria-labelledby="next-title">
+        <h2 id="next-title">下一步</h2>
+        <p>V2 站点完成后，可在“我的工作簿”中预览并导入此 JSON。</p>
+        <p>
+          <a href="README.md">查看当前仓库说明</a>
+          <span aria-hidden="true"> · </span>
+          <a href="https://github.com/lliangcol/Agent-Learning-Hub" rel="noopener noreferrer">GitHub 仓库</a>
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

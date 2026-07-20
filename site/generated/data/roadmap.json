@@ -1,0 +1,1862 @@
+{
+  "roadmap_version": "2.0.0",
+  "language_strategy": "简体中文为叙述主语言；术语首次出现给出英文，slug 与代码标识保留英文。",
+  "stages": [
+    {
+      "id": "S00",
+      "title": "Agent 适用性与边界",
+      "description": "通过可复查证据学习 Agent 适用性与边界。",
+      "tasks": [
+        {
+          "id": "S00-T01",
+          "title": "区分 chatbot、workflow、agent、multi-agent",
+          "status": "active",
+          "prerequisites": [],
+          "learning_outcomes": [
+            "能够解释并验证：区分 chatbot、workflow、agent、multi-agent。"
+          ],
+          "concepts": [
+            "Agent 适用性与边界"
+          ],
+          "lab_path": null,
+          "artifact": "workbook/local/evidence/S00-T01.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run python tools/validate_content.py"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R001",
+            "R002",
+            "R004"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S00-T02",
+          "title": "理解 agent 的基本循环：observe -> think -> act -> observe",
+          "status": "active",
+          "prerequisites": [
+            "S00-T01"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：理解 agent 的基本循环：observe -> think -> act -> observe。"
+          ],
+          "concepts": [
+            "Agent 适用性与边界"
+          ],
+          "lab_path": null,
+          "artifact": "workbook/local/evidence/S00-T02.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run python tools/validate_content.py"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R001",
+            "R002",
+            "R004"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S00-T03",
+          "title": "明白什么时候不该用 agent：任务可预测、流程稳定、普通脚本能解决时，agent 反而增加不确定性",
+          "status": "active",
+          "prerequisites": [
+            "S00-T02"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：明白什么时候不该用 agent：任务可预测、流程稳定、普通脚本能解决时，agent 反而增加不确定性。"
+          ],
+          "concepts": [
+            "Agent 适用性与边界"
+          ],
+          "lab_path": null,
+          "artifact": "workbook/local/evidence/S00-T03.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run python tools/validate_content.py"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R001",
+            "R002",
+            "R004"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S00-T04",
+          "title": "读完 [Anthropic: Building effective agents](https://www.anthropic.com/engineering/building-effective-agents)",
+          "status": "active",
+          "prerequisites": [
+            "S00-T03"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：读完 [Anthropic: Building effective agents](https://www.anthropic.com/engineering/building-effective-agents)。"
+          ],
+          "concepts": [
+            "Agent 适用性与边界"
+          ],
+          "lab_path": null,
+          "artifact": "workbook/local/evidence/S00-T04.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run python tools/validate_content.py"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R001",
+            "R002",
+            "R004"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S00-T05",
+          "title": "读完 [OpenAI: A practical guide to building agents](https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/)",
+          "status": "active",
+          "prerequisites": [
+            "S00-T04"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：读完 [OpenAI: A practical guide to building agents](https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/)。"
+          ],
+          "concepts": [
+            "Agent 适用性与边界"
+          ],
+          "lab_path": null,
+          "artifact": "workbook/local/evidence/S00-T05.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run python tools/validate_content.py"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R001",
+            "R002",
+            "R004"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        }
+      ]
+    },
+    {
+      "id": "S01",
+      "title": "LLM API 与结构化契约",
+      "description": "通过可复查证据学习 LLM API 与结构化契约。",
+      "tasks": [
+        {
+          "id": "S01-T01",
+          "title": "会用一个 LLM API 完成普通对话",
+          "status": "active",
+          "prerequisites": [],
+          "learning_outcomes": [
+            "能够解释并验证：会用一个 LLM API 完成普通对话。"
+          ],
+          "concepts": [
+            "LLM API 与结构化契约"
+          ],
+          "lab_path": "labs/stage-01-llm-contracts",
+          "artifact": "workbook/local/evidence/S01-T01.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-01-llm-contracts/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S01-T02",
+          "title": "会让模型输出结构化 JSON",
+          "status": "active",
+          "prerequisites": [
+            "S01-T01"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：会让模型输出结构化 JSON。"
+          ],
+          "concepts": [
+            "LLM API 与结构化契约"
+          ],
+          "lab_path": "labs/stage-01-llm-contracts",
+          "artifact": "workbook/local/evidence/S01-T02.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-01-llm-contracts/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S01-T03",
+          "title": "会定义一个工具函数，例如 search、calculator、read_file",
+          "status": "active",
+          "prerequisites": [
+            "S01-T02"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：会定义一个工具函数，例如 search、calculator、read_file。"
+          ],
+          "concepts": [
+            "LLM API 与结构化契约"
+          ],
+          "lab_path": "labs/stage-01-llm-contracts",
+          "artifact": "workbook/local/evidence/S01-T03.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-01-llm-contracts/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "title": "Agent Loop 与工具调用",
+      "description": "通过可复查证据学习 Agent Loop 与工具调用。",
+      "tasks": [
+        {
+          "id": "S02-T01",
+          "title": "会解析模型的 tool call / function call",
+          "status": "active",
+          "prerequisites": [],
+          "learning_outcomes": [
+            "能够解释并验证：会解析模型的 tool call / function call。"
+          ],
+          "concepts": [
+            "Agent Loop 与工具调用"
+          ],
+          "lab_path": "labs/stage-02-agent-loop",
+          "artifact": "workbook/local/evidence/S02-T01.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-02-agent-loop/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S02-T02",
+          "title": "会执行工具，并把工具结果喂回模型",
+          "status": "active",
+          "prerequisites": [
+            "S02-T01"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：会执行工具，并把工具结果喂回模型。"
+          ],
+          "concepts": [
+            "Agent Loop 与工具调用"
+          ],
+          "lab_path": "labs/stage-02-agent-loop",
+          "artifact": "workbook/local/evidence/S02-T02.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-02-agent-loop/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S02-T03",
+          "title": "会给 agent loop 加最大步数、超时和错误处理",
+          "status": "active",
+          "prerequisites": [
+            "S02-T02"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：会给 agent loop 加最大步数、超时和错误处理。"
+          ],
+          "concepts": [
+            "Agent Loop 与工具调用"
+          ],
+          "lab_path": "labs/stage-02-agent-loop",
+          "artifact": "workbook/local/evidence/S02-T03.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-02-agent-loop/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "title": "RAG、上下文与记忆",
+      "description": "通过可复查证据学习 RAG、上下文与记忆。",
+      "tasks": [
+        {
+          "id": "S03-T01",
+          "title": "会做检索增强生成：chunk、embed、retrieve、answer with citations",
+          "status": "active",
+          "prerequisites": [],
+          "learning_outcomes": [
+            "能够解释并验证：会做检索增强生成：chunk、embed、retrieve、answer with citations。"
+          ],
+          "concepts": [
+            "RAG、上下文与记忆"
+          ],
+          "lab_path": "labs/stage-03-rag-and-memory",
+          "artifact": "workbook/local/evidence/S03-T01.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-03-rag-and-memory/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R019",
+            "R020",
+            "R021"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S03-T02",
+          "title": "会区分短期上下文、会话记忆、长期记忆",
+          "status": "active",
+          "prerequisites": [
+            "S03-T01"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：会区分短期上下文、会话记忆、长期记忆。"
+          ],
+          "concepts": [
+            "RAG、上下文与记忆"
+          ],
+          "lab_path": "labs/stage-03-rag-and-memory",
+          "artifact": "workbook/local/evidence/S03-T02.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-03-rag-and-memory/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R019",
+            "R020",
+            "R021"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S03-T03",
+          "title": "会让 agent 在回答里给出来源或证据",
+          "status": "active",
+          "prerequisites": [
+            "S03-T02"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：会让 agent 在回答里给出来源或证据。"
+          ],
+          "concepts": [
+            "RAG、上下文与记忆"
+          ],
+          "lab_path": "labs/stage-03-rag-and-memory",
+          "artifact": "workbook/local/evidence/S03-T03.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-03-rag-and-memory/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R019",
+            "R020",
+            "R021"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "title": "可靠性、权限与安全",
+      "description": "通过可复查证据学习 可靠性、权限与安全。",
+      "tasks": [
+        {
+          "id": "S04-T01",
+          "title": "会把搜索、数据库、文件、浏览器、代码执行接成工具",
+          "status": "active",
+          "prerequisites": [],
+          "learning_outcomes": [
+            "能够解释并验证：会把搜索、数据库、文件、浏览器、代码执行接成工具。"
+          ],
+          "concepts": [
+            "可靠性、权限与安全"
+          ],
+          "lab_path": "labs/stage-04-reliability-and-safety",
+          "artifact": "workbook/local/evidence/S04-T01.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-04-reliability-and-safety/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R010",
+            "R012",
+            "R019"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S04-T02",
+          "title": "会处理工具失败、空结果、重复调用、幻觉引用",
+          "status": "active",
+          "prerequisites": [
+            "S04-T01"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：会处理工具失败、空结果、重复调用、幻觉引用。"
+          ],
+          "concepts": [
+            "可靠性、权限与安全"
+          ],
+          "lab_path": "labs/stage-04-reliability-and-safety",
+          "artifact": "workbook/local/evidence/S04-T02.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-04-reliability-and-safety/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R010",
+            "R012",
+            "R019"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S04-T03",
+          "title": "为 agent 准备固定测试集，而不是只看 demo",
+          "status": "active",
+          "prerequisites": [
+            "S04-T02"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：为 agent 准备固定测试集，而不是只看 demo。"
+          ],
+          "concepts": [
+            "可靠性、权限与安全"
+          ],
+          "lab_path": "labs/stage-04-reliability-and-safety",
+          "artifact": "workbook/local/evidence/S04-T03.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-04-reliability-and-safety/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R010",
+            "R012",
+            "R019"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S04-T04",
+          "title": "记录成功率、失败原因、工具调用次数、成本、延迟",
+          "status": "active",
+          "prerequisites": [
+            "S04-T03"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：记录成功率、失败原因、工具调用次数、成本、延迟。"
+          ],
+          "concepts": [
+            "可靠性、权限与安全"
+          ],
+          "lab_path": "labs/stage-04-reliability-and-safety",
+          "artifact": "workbook/local/evidence/S04-T04.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-04-reliability-and-safety/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R010",
+            "R012",
+            "R019"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S04-T05",
+          "title": "会看 trace，知道失败发生在 prompt、工具、检索、模型还是状态管理",
+          "status": "active",
+          "prerequisites": [
+            "S04-T04"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：会看 trace，知道失败发生在 prompt、工具、检索、模型还是状态管理。"
+          ],
+          "concepts": [
+            "可靠性、权限与安全"
+          ],
+          "lab_path": "labs/stage-04-reliability-and-safety",
+          "artifact": "workbook/local/evidence/S04-T05.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-04-reliability-and-safety/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R010",
+            "R012",
+            "R019"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S04-T06",
+          "title": "给危险工具加人工确认，例如发邮件、删文件、付款、发布内容",
+          "status": "active",
+          "prerequisites": [
+            "S04-T05"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：给危险工具加人工确认，例如发邮件、删文件、付款、发布内容。"
+          ],
+          "concepts": [
+            "可靠性、权限与安全"
+          ],
+          "lab_path": "labs/stage-04-reliability-and-safety",
+          "artifact": "workbook/local/evidence/S04-T06.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-04-reliability-and-safety/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R010",
+            "R012",
+            "R019"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S04-T07",
+          "title": "了解 prompt injection、data exfiltration、tool abuse 等风险",
+          "status": "active",
+          "prerequisites": [
+            "S04-T06"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：了解 prompt injection、data exfiltration、tool abuse 等风险。"
+          ],
+          "concepts": [
+            "可靠性、权限与安全"
+          ],
+          "lab_path": "labs/stage-04-reliability-and-safety",
+          "artifact": "workbook/local/evidence/S04-T07.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-04-reliability-and-safety/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R010",
+            "R012",
+            "R019"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S04-T08",
+          "title": "会用回归测试防止 prompt 或工具改动后能力退化",
+          "status": "active",
+          "prerequisites": [
+            "S04-T07"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：会用回归测试防止 prompt 或工具改动后能力退化。"
+          ],
+          "concepts": [
+            "可靠性、权限与安全"
+          ],
+          "lab_path": "labs/stage-04-reliability-and-safety",
+          "artifact": "workbook/local/evidence/S04-T08.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-04-reliability-and-safety/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R010",
+            "R012",
+            "R019"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "title": "Harness、Trace 与 Evals",
+      "description": "通过可复查证据学习 Harness、Trace 与 Evals。",
+      "tasks": [
+        {
+          "id": "S05-T01",
+          "title": "读懂一个 agent harness 的目录结构",
+          "status": "active",
+          "prerequisites": [],
+          "learning_outcomes": [
+            "能够解释并验证：读懂一个 agent harness 的目录结构。"
+          ],
+          "concepts": [
+            "Harness、Trace 与 Evals"
+          ],
+          "lab_path": "labs/stage-05-harness-and-evals",
+          "artifact": "workbook/local/evidence/S05-T01.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-05-harness-and-evals/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R016",
+            "R017",
+            "R018"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S05-T02",
+          "title": "找出它的 agent loop、tool registry、permission gate、session store、context compaction",
+          "status": "active",
+          "prerequisites": [
+            "S05-T01"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：找出它的 agent loop、tool registry、permission gate、session store、context compaction。"
+          ],
+          "concepts": [
+            "Harness、Trace 与 Evals"
+          ],
+          "lab_path": "labs/stage-05-harness-and-evals",
+          "artifact": "workbook/local/evidence/S05-T02.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-05-harness-and-evals/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R016",
+            "R017",
+            "R018"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S05-T03",
+          "title": "跑通它的最小示例，并加一个你自己的工具",
+          "status": "active",
+          "prerequisites": [
+            "S05-T02"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：跑通它的最小示例，并加一个你自己的工具。"
+          ],
+          "concepts": [
+            "Harness、Trace 与 Evals"
+          ],
+          "lab_path": "labs/stage-05-harness-and-evals",
+          "artifact": "workbook/local/evidence/S05-T03.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-05-harness-and-evals/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R016",
+            "R017",
+            "R018"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S05-T04",
+          "title": "观察一次完整 trace，解释每一步为什么发生",
+          "status": "active",
+          "prerequisites": [
+            "S05-T03"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：观察一次完整 trace，解释每一步为什么发生。"
+          ],
+          "concepts": [
+            "Harness、Trace 与 Evals"
+          ],
+          "lab_path": "labs/stage-05-harness-and-evals",
+          "artifact": "workbook/local/evidence/S05-T04.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-05-harness-and-evals/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R016",
+            "R017",
+            "R018"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S05-T05",
+          "title": "把同一个任务分别用「裸 agent loop」和「harness」实现，对比差异",
+          "status": "active",
+          "prerequisites": [
+            "S05-T04"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：把同一个任务分别用「裸 agent loop」和「harness」实现，对比差异。"
+          ],
+          "concepts": [
+            "Harness、Trace 与 Evals"
+          ],
+          "lab_path": "labs/stage-05-harness-and-evals",
+          "artifact": "workbook/local/evidence/S05-T05.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-05-harness-and-evals/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R016",
+            "R017",
+            "R018"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "title": "Skills 与协议",
+      "description": "通过可复查证据学习 Skills 与协议。",
+      "tasks": [
+        {
+          "id": "S06-T01",
+          "title": "理解 Skill 和 Tool 的区别：tool 是可调用接口，skill 是可复用流程知识",
+          "status": "active",
+          "prerequisites": [],
+          "learning_outcomes": [
+            "能够解释并验证：理解 Skill 和 Tool 的区别：tool 是可调用接口，skill 是可复用流程知识。"
+          ],
+          "concepts": [
+            "Skills 与协议"
+          ],
+          "lab_path": "labs/stage-06-skills-and-protocols",
+          "artifact": "workbook/local/evidence/S06-T01.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-06-skills-and-protocols/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R006",
+            "R015",
+            "R019"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S06-T02",
+          "title": "理解 Skill 和 Prompt 的区别：prompt 通常是一次性指令，skill 是可发现、可版本化、可分发的能力包",
+          "status": "active",
+          "prerequisites": [
+            "S06-T01"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：理解 Skill 和 Prompt 的区别：prompt 通常是一次性指令，skill 是可发现、可版本化、可分发的能力包。"
+          ],
+          "concepts": [
+            "Skills 与协议"
+          ],
+          "lab_path": "labs/stage-06-skills-and-protocols",
+          "artifact": "workbook/local/evidence/S06-T02.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-06-skills-and-protocols/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R006",
+            "R015",
+            "R019"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S06-T03",
+          "title": "理解 Skill 和 MCP 的区别：MCP 接入外部工具/数据源，skill 告诉 agent 如何完成一类任务",
+          "status": "active",
+          "prerequisites": [
+            "S06-T02"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：理解 Skill 和 MCP 的区别：MCP 接入外部工具/数据源，skill 告诉 agent 如何完成一类任务。"
+          ],
+          "concepts": [
+            "Skills 与协议"
+          ],
+          "lab_path": "labs/stage-06-skills-and-protocols",
+          "artifact": "workbook/local/evidence/S06-T03.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-06-skills-and-protocols/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R006",
+            "R015",
+            "R019"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S06-T04",
+          "title": "阅读 Claude Code Skills 的文件结构和触发机制",
+          "status": "active",
+          "prerequisites": [
+            "S06-T03"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：阅读 Claude Code Skills 的文件结构和触发机制。"
+          ],
+          "concepts": [
+            "Skills 与协议"
+          ],
+          "lab_path": "labs/stage-06-skills-and-protocols",
+          "artifact": "workbook/local/evidence/S06-T04.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-06-skills-and-protocols/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R006",
+            "R015",
+            "R019"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S06-T05",
+          "title": "阅读 OpenClaw Skills 的加载、作用域和安全边界",
+          "status": "active",
+          "prerequisites": [
+            "S06-T04"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：阅读 OpenClaw Skills 的加载、作用域和安全边界。"
+          ],
+          "concepts": [
+            "Skills 与协议"
+          ],
+          "lab_path": "labs/stage-06-skills-and-protocols",
+          "artifact": "workbook/local/evidence/S06-T05.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-06-skills-and-protocols/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R006",
+            "R015",
+            "R019"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S06-T06",
+          "title": "写一个最小 `SKILL.md`，包含 name、description、何时使用、步骤、验收标准",
+          "status": "active",
+          "prerequisites": [
+            "S06-T05"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：写一个最小 `SKILL.md`，包含 name、description、何时使用、步骤、验收标准。"
+          ],
+          "concepts": [
+            "Skills 与协议"
+          ],
+          "lab_path": "labs/stage-06-skills-and-protocols",
+          "artifact": "workbook/local/evidence/S06-T06.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-06-skills-and-protocols/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R006",
+            "R015",
+            "R019"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S06-T07",
+          "title": "给 skill 加一个脚本或模板文件，并说明 agent 什么时候才需要加载它",
+          "status": "active",
+          "prerequisites": [
+            "S06-T06"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：给 skill 加一个脚本或模板文件，并说明 agent 什么时候才需要加载它。"
+          ],
+          "concepts": [
+            "Skills 与协议"
+          ],
+          "lab_path": "labs/stage-06-skills-and-protocols",
+          "artifact": "workbook/local/evidence/S06-T07.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-06-skills-and-protocols/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R006",
+            "R015",
+            "R019"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S06-T08",
+          "title": "给 skill 写一个 smoke test，验证它是否真的提升任务成功率",
+          "status": "active",
+          "prerequisites": [
+            "S06-T07"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：给 skill 写一个 smoke test，验证它是否真的提升任务成功率。"
+          ],
+          "concepts": [
+            "Skills 与协议"
+          ],
+          "lab_path": "labs/stage-06-skills-and-protocols",
+          "artifact": "workbook/local/evidence/S06-T08.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-06-skills-and-protocols/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R006",
+            "R015",
+            "R019"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "title": "Browser 与 Computer Use",
+      "description": "通过可复查证据学习 Browser 与 Computer Use。",
+      "tasks": [
+        {
+          "id": "S07-T01",
+          "title": "理解 browser agent 和普通 API tool 的区别",
+          "status": "active",
+          "prerequisites": [],
+          "learning_outcomes": [
+            "能够解释并验证：理解 browser agent 和普通 API tool 的区别。"
+          ],
+          "concepts": [
+            "Browser 与 Computer Use"
+          ],
+          "lab_path": "labs/stage-07-browser-and-computer-use",
+          "artifact": "workbook/local/evidence/S07-T01.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-07-browser-and-computer-use/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R011",
+            "R032",
+            "R033"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S07-T02",
+          "title": "会用 Playwright 或 browser-use 做网页观察和点击",
+          "status": "active",
+          "prerequisites": [
+            "S07-T01"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：会用 Playwright 或 browser-use 做网页观察和点击。"
+          ],
+          "concepts": [
+            "Browser 与 Computer Use"
+          ],
+          "lab_path": "labs/stage-07-browser-and-computer-use",
+          "artifact": "workbook/local/evidence/S07-T02.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-07-browser-and-computer-use/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R011",
+            "R032",
+            "R033"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S07-T03",
+          "title": "会给浏览器操作加安全限制：不登录敏感账号、不越权、不绕过平台规则",
+          "status": "active",
+          "prerequisites": [
+            "S07-T02"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：会给浏览器操作加安全限制：不登录敏感账号、不越权、不绕过平台规则。"
+          ],
+          "concepts": [
+            "Browser 与 Computer Use"
+          ],
+          "lab_path": "labs/stage-07-browser-and-computer-use",
+          "artifact": "workbook/local/evidence/S07-T03.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-07-browser-and-computer-use/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R011",
+            "R032",
+            "R033"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S07-T04",
+          "title": "会处理页面变化、弹窗、加载失败、元素定位失败",
+          "status": "active",
+          "prerequisites": [
+            "S07-T03"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：会处理页面变化、弹窗、加载失败、元素定位失败。"
+          ],
+          "concepts": [
+            "Browser 与 Computer Use"
+          ],
+          "lab_path": "labs/stage-07-browser-and-computer-use",
+          "artifact": "workbook/local/evidence/S07-T04.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-07-browser-and-computer-use/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R011",
+            "R032",
+            "R033"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S07-T05",
+          "title": "会记录截图、DOM、动作日志，方便复盘",
+          "status": "active",
+          "prerequisites": [
+            "S07-T04"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：会记录截图、DOM、动作日志，方便复盘。"
+          ],
+          "concepts": [
+            "Browser 与 Computer Use"
+          ],
+          "lab_path": "labs/stage-07-browser-and-computer-use",
+          "artifact": "workbook/local/evidence/S07-T05.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-07-browser-and-computer-use/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R011",
+            "R032",
+            "R033"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "title": "Multi-Agent 协调",
+      "description": "通过可复查证据学习 Multi-Agent 协调。",
+      "tasks": [
+        {
+          "id": "S08-T01",
+          "title": "理解 planner / executor / reviewer / critic / router 等常见角色",
+          "status": "active",
+          "prerequisites": [],
+          "learning_outcomes": [
+            "能够解释并验证：理解 planner / executor / reviewer / critic / router 等常见角色。"
+          ],
+          "concepts": [
+            "Multi-Agent 协调"
+          ],
+          "lab_path": "labs/stage-08-multi-agent",
+          "artifact": "workbook/local/evidence/S08-T01.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-08-multi-agent/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R003",
+            "R006",
+            "R016"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S08-T02",
+          "title": "学会用 supervisor 或 graph 管理多 agent，而不是让 agent 随便聊天",
+          "status": "active",
+          "prerequisites": [
+            "S08-T01"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：学会用 supervisor 或 graph 管理多 agent，而不是让 agent 随便聊天。"
+          ],
+          "concepts": [
+            "Multi-Agent 协调"
+          ],
+          "lab_path": "labs/stage-08-multi-agent",
+          "artifact": "workbook/local/evidence/S08-T02.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-08-multi-agent/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R003",
+            "R006",
+            "R016"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S08-T03",
+          "title": "会定义每个 agent 的职责边界、输入输出 schema、停止条件",
+          "status": "active",
+          "prerequisites": [
+            "S08-T02"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：会定义每个 agent 的职责边界、输入输出 schema、停止条件。"
+          ],
+          "concepts": [
+            "Multi-Agent 协调"
+          ],
+          "lab_path": "labs/stage-08-multi-agent",
+          "artifact": "workbook/local/evidence/S08-T03.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-08-multi-agent/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R003",
+            "R006",
+            "R016"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S08-T04",
+          "title": "会处理循环、争论、任务漂移、上下文膨胀",
+          "status": "active",
+          "prerequisites": [
+            "S08-T03"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：会处理循环、争论、任务漂移、上下文膨胀。"
+          ],
+          "concepts": [
+            "Multi-Agent 协调"
+          ],
+          "lab_path": "labs/stage-08-multi-agent",
+          "artifact": "workbook/local/evidence/S08-T04.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-08-multi-agent/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R003",
+            "R006",
+            "R016"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S08-T05",
+          "title": "会判断什么时候单 agent 更好",
+          "status": "active",
+          "prerequisites": [
+            "S08-T04"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：会判断什么时候单 agent 更好。"
+          ],
+          "concepts": [
+            "Multi-Agent 协调"
+          ],
+          "lab_path": "labs/stage-08-multi-agent",
+          "artifact": "workbook/local/evidence/S08-T05.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-08-multi-agent/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [
+            "R003",
+            "R006",
+            "R016"
+          ],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "title": "Capstone",
+      "description": "通过可复查证据学习 Capstone。",
+      "tasks": [
+        {
+          "id": "S09-T01",
+          "title": "有明确用户、明确任务、明确成功标准",
+          "status": "active",
+          "prerequisites": [],
+          "learning_outcomes": [
+            "能够解释并验证：有明确用户、明确任务、明确成功标准。"
+          ],
+          "concepts": [
+            "Capstone"
+          ],
+          "lab_path": "labs/stage-09-capstone",
+          "artifact": "workbook/local/evidence/S09-T01.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-09-capstone/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S09-T02",
+          "title": "有日志、trace、错误重试、超时、成本上限",
+          "status": "active",
+          "prerequisites": [
+            "S09-T01"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：有日志、trace、错误重试、超时、成本上限。"
+          ],
+          "concepts": [
+            "Capstone"
+          ],
+          "lab_path": "labs/stage-09-capstone",
+          "artifact": "workbook/local/evidence/S09-T02.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-09-capstone/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S09-T03",
+          "title": "有权限边界和人工确认机制",
+          "status": "active",
+          "prerequisites": [
+            "S09-T02"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：有权限边界和人工确认机制。"
+          ],
+          "concepts": [
+            "Capstone"
+          ],
+          "lab_path": "labs/stage-09-capstone",
+          "artifact": "workbook/local/evidence/S09-T03.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-09-capstone/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S09-T04",
+          "title": "有部署方式：CLI、Web app、Slack bot、GitHub Action 或后台任务",
+          "status": "active",
+          "prerequisites": [
+            "S09-T03"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：有部署方式：CLI、Web app、Slack bot、GitHub Action 或后台任务。"
+          ],
+          "concepts": [
+            "Capstone"
+          ],
+          "lab_path": "labs/stage-09-capstone",
+          "artifact": "workbook/local/evidence/S09-T04.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-09-capstone/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        },
+        {
+          "id": "S09-T05",
+          "title": "有 README：怎么运行、怎么配置 key、怎么扩展工具、有哪些限制",
+          "status": "active",
+          "prerequisites": [
+            "S09-T04"
+          ],
+          "learning_outcomes": [
+            "能够解释并验证：有 README：怎么运行、怎么配置 key、怎么扩展工具、有哪些限制。"
+          ],
+          "concepts": [
+            "Capstone"
+          ],
+          "lab_path": "labs/stage-09-capstone",
+          "artifact": "workbook/local/evidence/S09-T05.md",
+          "rubric": [
+            "概念说明准确且边界清晰。",
+            "验证命令通过，并记录至少一个失败场景。"
+          ],
+          "validation_commands": [
+            "uv run pytest labs/stage-09-capstone/tests"
+          ],
+          "failure_cases": [
+            "输入为空、无效或依赖不可用时给出可解释结果。"
+          ],
+          "safety_notes": [
+            "使用最小权限；不把 mock、普通子进程或未验证输出描述成真实安全能力。"
+          ],
+          "resources": [],
+          "estimated_effort": "1-2h",
+          "introduced_in": "2.0.0",
+          "last_reviewed_at": "2026-07-20"
+        }
+      ]
+    }
+  ]
+}

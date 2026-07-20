@@ -1,0 +1,16 @@
+{
+  "baseline": {
+    "v1_index_bytes": 75376,
+    "v2_site_bytes": 2934083,
+    "v2_custom_javascript_bytes": 14280,
+    "v2_vendored_javascript_bytes": 72218,
+    "v2_file_count": 67,
+    "measured_at": "2026-07-20"
+  },
+  "budget": {
+    "site_bytes": 3500000,
+    "custom_javascript_bytes": 20000,
+    "vendored_javascript_bytes": 90000,
+    "file_count": 80
+  }
+}

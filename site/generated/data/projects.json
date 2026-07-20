@@ -1,0 +1,258 @@
+{
+  "schema_version": "2.0.0",
+  "projects": [
+    {
+      "id": "P01",
+      "title": "Calculator Agent",
+      "track": "基础工具",
+      "difficulty": "beginner",
+      "required": false,
+      "prerequisite_task_ids": [
+        "S02-T03"
+      ],
+      "artifact": "workbook/local/projects/P01/README.md",
+      "rubric": [
+        "产物展示 最小 tool call loop。",
+        "验证命令、限制与回滚方式完整。"
+      ],
+      "validation_commands": [
+        "uv run pytest"
+      ],
+      "safety_notes": [
+        "只使用合成数据；外部发布或高风险动作需要用户批准。"
+      ],
+      "estimated_effort": "2-4h",
+      "status": "active"
+    },
+    {
+      "id": "P02",
+      "title": "Web Research Agent",
+      "track": "研究与 RAG",
+      "difficulty": "beginner",
+      "required": false,
+      "prerequisite_task_ids": [
+        "S02-T03"
+      ],
+      "artifact": "workbook/local/projects/P02/README.md",
+      "rubric": [
+        "产物展示 搜索、筛选、引用、总结。",
+        "验证命令、限制与回滚方式完整。"
+      ],
+      "validation_commands": [
+        "uv run pytest"
+      ],
+      "safety_notes": [
+        "只使用合成数据；外部发布或高风险动作需要用户批准。"
+      ],
+      "estimated_effort": "4-6h",
+      "status": "active"
+    },
+    {
+      "id": "P03",
+      "title": "PDF QA Agent",
+      "track": "研究与 RAG",
+      "difficulty": "beginner",
+      "required": false,
+      "prerequisite_task_ids": [
+        "S02-T03"
+      ],
+      "artifact": "workbook/local/projects/P03/README.md",
+      "rubric": [
+        "产物展示 RAG、chunk、retrieval、citation。",
+        "验证命令、限制与回滚方式完整。"
+      ],
+      "validation_commands": [
+        "uv run pytest"
+      ],
+      "safety_notes": [
+        "只使用合成数据；外部发布或高风险动作需要用户批准。"
+      ],
+      "estimated_effort": "6-9h",
+      "status": "active"
+    },
+    {
+      "id": "P04",
+      "title": "Coding Review Agent",
+      "track": "Coding Agent",
+      "difficulty": "intermediate",
+      "required": false,
+      "prerequisite_task_ids": [
+        "S04-T08"
+      ],
+      "artifact": "workbook/local/projects/P04/README.md",
+      "rubric": [
+        "产物展示 读取 diff、风险排序、测试建议。",
+        "验证命令、限制与回滚方式完整。"
+      ],
+      "validation_commands": [
+        "uv run pytest"
+      ],
+      "safety_notes": [
+        "只使用合成数据；外部发布或高风险动作需要用户批准。"
+      ],
+      "estimated_effort": "8-12h",
+      "status": "active"
+    },
+    {
+      "id": "P05",
+      "title": "Browser Agent",
+      "track": "Browser 与 Computer Use",
+      "difficulty": "intermediate",
+      "required": false,
+      "prerequisite_task_ids": [
+        "S04-T08"
+      ],
+      "artifact": "workbook/local/projects/P05/README.md",
+      "rubric": [
+        "产物展示 页面观察、点击、提取、失败恢复。",
+        "验证命令、限制与回滚方式完整。"
+      ],
+      "validation_commands": [
+        "uv run pytest"
+      ],
+      "safety_notes": [
+        "只使用合成数据；外部发布或高风险动作需要用户批准。"
+      ],
+      "estimated_effort": "10-15h",
+      "status": "active"
+    },
+    {
+      "id": "P06",
+      "title": "Claude Code-like Nano Agent",
+      "track": "Coding Agent",
+      "difficulty": "intermediate",
+      "required": false,
+      "prerequisite_task_ids": [
+        "S04-T08"
+      ],
+      "artifact": "workbook/local/projects/P06/README.md",
+      "rubric": [
+        "产物展示 shell、文件编辑、权限、session、compact。",
+        "验证命令、限制与回滚方式完整。"
+      ],
+      "validation_commands": [
+        "uv run pytest"
+      ],
+      "safety_notes": [
+        "只使用合成数据；外部发布或高风险动作需要用户批准。"
+      ],
+      "estimated_effort": "12-18h",
+      "status": "active"
+    },
+    {
+      "id": "P07",
+      "title": "OpenClaw-like Gateway",
+      "track": "Personal Agent",
+      "difficulty": "intermediate",
+      "required": false,
+      "prerequisite_task_ids": [
+        "S04-T08"
+      ],
+      "artifact": "workbook/local/projects/P07/README.md",
+      "rubric": [
+        "产物展示 channel、routing、session、memory、heartbeat、delivery。",
+        "验证命令、限制与回滚方式完整。"
+      ],
+      "validation_commands": [
+        "uv run pytest"
+      ],
+      "safety_notes": [
+        "只使用合成数据；外部发布或高风险动作需要用户批准。"
+      ],
+      "estimated_effort": "14-21h",
+      "status": "active"
+    },
+    {
+      "id": "P08",
+      "title": "Reusable Skill Pack",
+      "track": "Skills 与协议",
+      "difficulty": "intermediate",
+      "required": false,
+      "prerequisite_task_ids": [
+        "S04-T08"
+      ],
+      "artifact": "workbook/local/projects/P08/README.md",
+      "rubric": [
+        "产物展示 SKILL.md、脚本、模板、触发条件、smoke test。",
+        "验证命令、限制与回滚方式完整。"
+      ],
+      "validation_commands": [
+        "uv run pytest"
+      ],
+      "safety_notes": [
+        "只使用合成数据；外部发布或高风险动作需要用户批准。"
+      ],
+      "estimated_effort": "16-24h",
+      "status": "active"
+    },
+    {
+      "id": "P09",
+      "title": "Multi-Agent Writer",
+      "track": "Multi-Agent",
+      "difficulty": "advanced",
+      "required": false,
+      "prerequisite_task_ids": [
+        "S04-T08"
+      ],
+      "artifact": "workbook/local/projects/P09/README.md",
+      "rubric": [
+        "产物展示 planner、writer、reviewer 协作。",
+        "验证命令、限制与回滚方式完整。"
+      ],
+      "validation_commands": [
+        "uv run pytest"
+      ],
+      "safety_notes": [
+        "只使用合成数据；外部发布或高风险动作需要用户批准。"
+      ],
+      "estimated_effort": "18-27h",
+      "status": "active"
+    },
+    {
+      "id": "P10",
+      "title": "Personal Agent",
+      "track": "Personal Agent",
+      "difficulty": "advanced",
+      "required": false,
+      "prerequisite_task_ids": [
+        "S04-T08"
+      ],
+      "artifact": "workbook/local/projects/P10/README.md",
+      "rubric": [
+        "产物展示 OpenClaw/Hermes-style 记忆、skills、消息入口。",
+        "验证命令、限制与回滚方式完整。"
+      ],
+      "validation_commands": [
+        "uv run pytest"
+      ],
+      "safety_notes": [
+        "只使用合成数据；外部发布或高风险动作需要用户批准。"
+      ],
+      "estimated_effort": "20-30h",
+      "status": "active"
+    },
+    {
+      "id": "P11",
+      "title": "Production Harness",
+      "track": "Production Harness",
+      "difficulty": "advanced",
+      "required": false,
+      "prerequisite_task_ids": [
+        "S04-T08"
+      ],
+      "artifact": "workbook/local/projects/P11/README.md",
+      "rubric": [
+        "产物展示 evals、trace、权限、CI、runner、回放。",
+        "验证命令、限制与回滚方式完整。"
+      ],
+      "validation_commands": [
+        "uv run pytest"
+      ],
+      "safety_notes": [
+        "只使用合成数据；外部发布或高风险动作需要用户批准。"
+      ],
+      "estimated_effort": "22-33h",
+      "status": "active"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "agent-learning-hub-site",
+  "version": "2.0.0-rc.1",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "build": "node tools/build-site-assets.mjs",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "lint:md": "markdownlint-cli2 \"**/*.md\" \"#node_modules\" \"#site-build\""
+  },
+  "dependencies": {
+    "dompurify": "3.4.12",
+    "marked": "18.0.6"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.12.1",
+    "@playwright/test": "1.61.1",
+    "jsdom": "29.1.1",
+    "markdownlint-cli2": "0.23.1",
+    "vitest": "4.1.10"
+  }
+}

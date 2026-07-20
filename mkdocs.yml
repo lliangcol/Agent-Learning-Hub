@@ -1,0 +1,73 @@
+site_name: Agent Learning Hub
+site_description: 离线优先、可验证、可迁移的 AI Agent 学习实验室
+site_url: https://lliangcol.github.io/Agent-Learning-Hub/
+docs_dir: site
+site_dir: site-build
+use_directory_urls: true
+strict: true
+
+theme:
+  name: material
+  language: zh
+  custom_dir: site/overrides
+  font: false
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.copy
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: 切换到深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: 切换到浅色模式
+
+nav:
+  - 开始学习: index.md
+  - 课程路线: generated/roadmap.md
+  - 实验室: pages/labs.md
+  - 项目阶梯: generated/projects.md
+  - 资源目录: generated/resources.md
+  - 我的工作簿: pages/workbook.md
+  - 贡献指南: pages/contributing.md
+
+plugins:
+  - search:
+      lang:
+        - zh
+        - en
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+
+extra_css:
+  - src/site.css
+
+extra_javascript:
+  - assets/vendor/marked.js
+  - assets/vendor/purify.min.js
+  - src/progress.js
+  - src/notes.js
+  - src/app.js
+
+exclude_docs: |
+  overrides/
+  src/*.test.js
+  **/__pycache__/**
