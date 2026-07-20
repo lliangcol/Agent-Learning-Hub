@@ -3,6 +3,7 @@
 - 审计日期：2026-07-20
 - 基线：`842d45f`
 - 执行分支：`feature/agent-learning-hub-v2`
+- 最终功能源证据：`cba4191` 的全新 checkout（本报告随后仅更新验证证据）
 - 证据边界：当前为未推送的本地执行分支；本地绿色不等于 GitHub CI、RC 或 Pages 已发布。
 
 状态定义：`local-complete` 表示本地实现与对应门禁完成；`user-gate` 表示计划明确
@@ -61,7 +62,7 @@
 | P5-04 | local-complete | 稳定路由、构建搜索索引和文本安全高亮通过。 |
 | P5-05 | local-complete | Vitest 12 passed；系统 Chrome 150 上 Playwright 27 passed/6 矩阵 skip。锁定 Chromium 1228 下载本轮超时，CI 需补正式证据。 |
 | P5-06 | local-complete | 旧入口/锚点映射和 legacy 保留策略已实现。 |
-| P5-07 | local-complete | 无 JS、无第三方运行时请求和断网可读验证通过；68 文件连续构建摘要一致；四项性能预算通过。 |
+| P5-07 | local-complete | 无 JS、无第三方运行时请求和断网可读验证通过；68 文件连续构建摘要 `12e92b5fcb18689d4a64a609cdbf232addcc9bc833f410f820b878dbcdaae173` 一致；四项性能预算通过。 |
 | P6-01 | local-complete | 内部链接阻断、变更链接与每周全量外链工作流齐全。 |
 | P6-02 | local-complete | 只读 upstream audit 生成报告，不自动合并或创建外部 Issue。 |
 | P6-03 | local-complete | 贡献指南、PR/Issue 模板覆盖代码、课程、站点、测试、风险、迁移与回滚。 |
@@ -80,10 +81,13 @@
 - 前端：12 passed；Playwright：27 passed、6 个按矩阵设计 skip。
 - 内容：10 stages、50 tasks、11 projects；Lab 与资源/内部链接校验通过。
 - 构建：68 文件连续两次摘要均为
-  `1a2d8913f8a969d2910c49c62fad047fe7da808ffe91a8f5536cc960658465a2`。
-- 供应链：pip/npm 已知漏洞 0；actionlint 通过；226 个 Git 候选文件 gitleaks 0 命中。
+  `12e92b5fcb18689d4a64a609cdbf232addcc9bc833f410f820b878dbcdaae173`；总计
+  2,903,989 bytes，定制 JavaScript 19,966 bytes。
+- 供应链：pip/npm 已知漏洞 0；actionlint 通过；从基线到 `cba4191` 的 6 个提交
+  经 gitleaks 扫描 1.08 MB、0 命中；当前 227 个 Git tracked files。
 
 ## 当前停止线
 
 维护者已授权并创建本地分阶段 commits，但未授权 push、tag、修改仓库设置或部署
-Pages。后续仍必须以全新 checkout 和 GitHub Windows/Ubuntu CI 取代本地工作树证据。
+Pages。本地全新 checkout 已通过；后续仍必须由 GitHub Windows/Ubuntu CI、preview
+artifact、真实屏幕阅读器抽查和维护者 smoke test 补齐外部证据。
