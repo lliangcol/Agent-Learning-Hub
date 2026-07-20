@@ -1,0 +1,39 @@
+name: Bug report
+description: 报告可复现的课程、Lab、迁移或站点问题
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: 安全漏洞或敏感数据请按 SECURITY.md 私下报告，不要在此公开。
+  - type: input
+    id: ids
+    attributes:
+      label: 影响 ID 或路径
+      description: Stage/Task/Project/Resource ID，或具体文件路径。
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 复现步骤
+      description: 包含命令、输入、环境和最小样例；请先删除密钥与个人数据。
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期与实际结果
+    validations:
+      required: true
+  - type: textarea
+    id: rollback
+    attributes:
+      label: 已尝试的恢复或回滚
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: 数据确认
+      options:
+        - label: 我确认内容中没有 API key、个人笔记或敏感浏览器导出。
+          required: true

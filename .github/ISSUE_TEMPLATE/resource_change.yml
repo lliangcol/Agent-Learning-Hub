@@ -1,0 +1,39 @@
+name: Resource change
+description: 建议新增、替换或归档学习资源
+title: "[Resource]: "
+labels: [resources]
+body:
+  - type: input
+    id: url
+    attributes:
+      label: HTTPS URL
+    validations:
+      required: true
+  - type: input
+    id: stages
+    attributes:
+      label: 关联 Stage
+      placeholder: S03, S05
+    validations:
+      required: true
+  - type: dropdown
+    id: source
+    attributes:
+      label: 来源类型
+      options: [official_docs, official_blog, paper, repository, technical_blog]
+    validations:
+      required: true
+  - type: textarea
+    id: value
+    attributes:
+      label: 学习价值与替代关系
+      description: 说明为何比现有条目更有用；归档时提供替代 ID。
+    validations:
+      required: true
+  - type: textarea
+    id: license
+    attributes:
+      label: 许可证或访问说明
+      description: 默认只提供链接，不复制正文。
+    validations:
+      required: true
