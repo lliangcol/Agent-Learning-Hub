@@ -1,0 +1,7 @@
+[
+  {"id": "C01", "scenario": "cited_query"},
+  {"id": "C02", "scenario": "no_source"},
+  {"id": "C03", "scenario": "denied_external"},
+  {"id": "C04", "scenario": "secret_input"},
+  {"id": "C05", "scenario": "malformed"}
+]

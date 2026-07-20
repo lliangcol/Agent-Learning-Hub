@@ -1,0 +1,169 @@
+{
+  "schema_version": "2.0.0",
+  "roadmap_version": "2.0.0",
+  "updated_at": "2026-07-20T07:47:54.268333+00:00",
+  "origin": "repository-v1-snapshot",
+  "task_progress": {
+    "S00-T01": {
+      "state": "complete",
+      "updated_at": "2026-07-20T07:47:54.268333+00:00",
+      "evidence_paths": [
+        "workbook/archive/legacy-v1/learning-notes/PROGRESS.md"
+      ],
+      "review": "从 V1 布尔状态迁移；只有证据充分的状态才保留完成语义。",
+      "environment": "V1 legacy snapshot; environment evidence incomplete",
+      "next_anchor": "按 V2 task rubric 复核并记录新证据"
+    },
+    "S00-T02": {
+      "state": "complete",
+      "updated_at": "2026-07-20T07:47:54.268333+00:00",
+      "evidence_paths": [
+        "workbook/archive/legacy-v1/learning-notes/PROGRESS.md"
+      ],
+      "review": "从 V1 布尔状态迁移；只有证据充分的状态才保留完成语义。",
+      "environment": "V1 legacy snapshot; environment evidence incomplete",
+      "next_anchor": "按 V2 task rubric 复核并记录新证据"
+    },
+    "S00-T03": {
+      "state": "complete",
+      "updated_at": "2026-07-20T07:47:54.268333+00:00",
+      "evidence_paths": [
+        "workbook/archive/legacy-v1/learning-notes/PROGRESS.md"
+      ],
+      "review": "从 V1 布尔状态迁移；只有证据充分的状态才保留完成语义。",
+      "environment": "V1 legacy snapshot; environment evidence incomplete",
+      "next_anchor": "按 V2 task rubric 复核并记录新证据"
+    },
+    "S00-T04": {
+      "state": "complete",
+      "updated_at": "2026-07-20T07:47:54.268333+00:00",
+      "evidence_paths": [
+        "workbook/archive/legacy-v1/learning-notes/PROGRESS.md"
+      ],
+      "review": "从 V1 布尔状态迁移；只有证据充分的状态才保留完成语义。",
+      "environment": "V1 legacy snapshot; environment evidence incomplete",
+      "next_anchor": "按 V2 task rubric 复核并记录新证据"
+    },
+    "S00-T05": {
+      "state": "complete",
+      "updated_at": "2026-07-20T07:47:54.268333+00:00",
+      "evidence_paths": [
+        "workbook/archive/legacy-v1/learning-notes/PROGRESS.md"
+      ],
+      "review": "从 V1 布尔状态迁移；只有证据充分的状态才保留完成语义。",
+      "environment": "V1 legacy snapshot; environment evidence incomplete",
+      "next_anchor": "按 V2 task rubric 复核并记录新证据"
+    },
+    "S01-T01": {
+      "state": "lab_verified_offline",
+      "updated_at": "2026-07-20T07:47:54.268333+00:00",
+      "evidence_paths": [
+        "workbook/archive/legacy-v1/learning-notes/PROGRESS.md"
+      ],
+      "review": "从 V1 布尔状态迁移；只有证据充分的状态才保留完成语义。",
+      "environment": "V1 legacy snapshot; environment evidence incomplete",
+      "next_anchor": "按 V2 task rubric 复核并记录新证据"
+    },
+    "S01-T02": {
+      "state": "lab_verified_offline",
+      "updated_at": "2026-07-20T07:47:54.268333+00:00",
+      "evidence_paths": [
+        "workbook/archive/legacy-v1/learning-notes/PROGRESS.md"
+      ],
+      "review": "从 V1 布尔状态迁移；只有证据充分的状态才保留完成语义。",
+      "environment": "V1 legacy snapshot; environment evidence incomplete",
+      "next_anchor": "按 V2 task rubric 复核并记录新证据"
+    },
+    "S01-T03": {
+      "state": "lab_verified_offline",
+      "updated_at": "2026-07-20T07:47:54.268333+00:00",
+      "evidence_paths": [
+        "workbook/archive/legacy-v1/learning-notes/PROGRESS.md"
+      ],
+      "review": "从 V1 布尔状态迁移；只有证据充分的状态才保留完成语义。",
+      "environment": "V1 legacy snapshot; environment evidence incomplete",
+      "next_anchor": "按 V2 task rubric 复核并记录新证据"
+    },
+    "S02-T01": {
+      "state": "lab_verified_offline",
+      "updated_at": "2026-07-20T07:47:54.268333+00:00",
+      "evidence_paths": [
+        "workbook/archive/legacy-v1/learning-notes/PROGRESS.md"
+      ],
+      "review": "从 V1 布尔状态迁移；只有证据充分的状态才保留完成语义。",
+      "environment": "V1 legacy snapshot; environment evidence incomplete",
+      "next_anchor": "按 V2 task rubric 复核并记录新证据"
+    },
+    "S02-T02": {
+      "state": "lab_verified_offline",
+      "updated_at": "2026-07-20T07:47:54.268333+00:00",
+      "evidence_paths": [
+        "workbook/archive/legacy-v1/learning-notes/PROGRESS.md"
+      ],
+      "review": "从 V1 布尔状态迁移；只有证据充分的状态才保留完成语义。",
+      "environment": "V1 legacy snapshot; environment evidence incomplete",
+      "next_anchor": "按 V2 task rubric 复核并记录新证据"
+    },
+    "S02-T03": {
+      "state": "lab_verified_offline",
+      "updated_at": "2026-07-20T07:47:54.268333+00:00",
+      "evidence_paths": [
+        "workbook/archive/legacy-v1/learning-notes/PROGRESS.md"
+      ],
+      "review": "从 V1 布尔状态迁移；只有证据充分的状态才保留完成语义。",
+      "environment": "V1 legacy snapshot; environment evidence incomplete",
+      "next_anchor": "按 V2 task rubric 复核并记录新证据"
+    },
+    "S03-T01": {
+      "state": "needs_revalidation",
+      "updated_at": "2026-07-20T07:47:54.268333+00:00",
+      "evidence_paths": [
+        "workbook/archive/legacy-v1/learning-notes/PROGRESS.md"
+      ],
+      "review": "从 V1 布尔状态迁移；只有证据充分的状态才保留完成语义。",
+      "environment": "V1 legacy snapshot; environment evidence incomplete",
+      "next_anchor": "按 V2 task rubric 复核并记录新证据"
+    },
+    "S04-T01": {
+      "state": "validation_failed",
+      "updated_at": "2026-07-20T07:47:54.268333+00:00",
+      "evidence_paths": [
+        "workbook/archive/legacy-v1/learning-notes/PROGRESS.md"
+      ],
+      "review": "从 V1 布尔状态迁移；只有证据充分的状态才保留完成语义。",
+      "environment": "V1 legacy snapshot; environment evidence incomplete",
+      "next_anchor": "按 V2 task rubric 复核并记录新证据"
+    },
+    "S03-T02": {
+      "state": "lab_verified_offline",
+      "updated_at": "2026-07-20T07:47:54.268333+00:00",
+      "evidence_paths": [
+        "workbook/archive/legacy-v1/learning-notes/PROGRESS.md"
+      ],
+      "review": "从 V1 布尔状态迁移；只有证据充分的状态才保留完成语义。",
+      "environment": "V1 legacy snapshot; environment evidence incomplete",
+      "next_anchor": "按 V2 task rubric 复核并记录新证据"
+    },
+    "S04-T02": {
+      "state": "learning",
+      "updated_at": "2026-07-20T07:47:54.268333+00:00",
+      "evidence_paths": [
+        "workbook/archive/legacy-v1/learning-notes/PROGRESS.md"
+      ],
+      "review": "从 V1 布尔状态迁移；只有证据充分的状态才保留完成语义。",
+      "environment": "V1 legacy snapshot; environment evidence incomplete",
+      "next_anchor": "按 V2 task rubric 复核并记录新证据"
+    },
+    "S03-T03": {
+      "state": "not_started",
+      "updated_at": "2026-07-20T07:47:54.268333+00:00",
+      "evidence_paths": [
+        "workbook/archive/legacy-v1/learning-notes/PROGRESS.md"
+      ],
+      "review": "从 V1 布尔状态迁移；只有证据充分的状态才保留完成语义。",
+      "environment": "V1 legacy snapshot; environment evidence incomplete",
+      "next_anchor": "按 V2 task rubric 复核并记录新证据"
+    }
+  },
+  "project_progress": {}
+}

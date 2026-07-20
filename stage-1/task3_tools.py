@@ -1,18 +1,13 @@
 # task3_tools.py — Task 3: 定义工具函数
 
-import sys, io
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
-
+from agent_learning_hub.tools import safe_calculate
 
 # ── 1. 工具函数（程序执行） ──────────────────────────────────────
 
+
 def calculator(expression):
     """计算一个数学表达式，例如 '2 + 3 * 4'"""
-    try:
-        result = eval(expression)
-        return {"result": result}
-    except Exception as e:
-        return {"error": str(e)}
+    return safe_calculate(expression).as_dict()
 
 
 def get_weather(city):

@@ -1,7 +1,8 @@
 # task6_agent_loop.py — Task 6: agent loop + 最大步数 + 超时 + 错误处理
 
-import sys, io, time
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
+import time
+
+from agent_learning_hub.tools import safe_calculate
 
 MAX_STEPS = 5
 TIMEOUT_SECONDS = 10
@@ -9,11 +10,10 @@ TIMEOUT_SECONDS = 10
 
 # ── 工具 ────────────────────────────────────────────────────────────
 
+
 def calculator(expression):
-    try:
-        return {"result": eval(expression)}
-    except Exception as e:
-        return {"error": str(e)}
+    return safe_calculate(expression).as_dict()
+
 
 TOOL_REGISTRY = {"calculator": calculator}
 
@@ -25,18 +25,23 @@ def run_tool(tool_name, tool_input):
 
 
 def add_tool_result(messages, tool_name, tool_input, tool_output):
-    messages.append({
-        "role": "assistant",
-        "content": {"type": "tool_use", "name": tool_name, "input": tool_input},
-    })
-    messages.append({
-        "role": "tool",
-        "name": tool_name,
-        "content": str(tool_output),
-    })
+    messages.append(
+        {
+            "role": "assistant",
+            "content": {"type": "tool_use", "name": tool_name, "input": tool_input},
+        }
+    )
+    messages.append(
+        {
+            "role": "tool",
+            "name": tool_name,
+            "content": str(tool_output),
+        }
+    )
 
 
 # ── mock LLM（三种场景） ────────────────────────────────────────────
+
 
 def mock_normal(messages):
     """场景 1：正常，一次工具调用后给出答案"""
@@ -59,16 +64,16 @@ def mock_tool_error(messages):
 
 # ── agent loop ──────────────────────────────────────────────────────
 
+
 def agent_loop(user_input, mock_llm):
     messages = [
         {"role": "system", "content": "你是一个助手，可以使用 calculator 工具。"},
-        {"role": "user",   "content": user_input},
+        {"role": "user", "content": user_input},
     ]
 
     start_time = time.time()
 
     for step in range(1, MAX_STEPS + 1):
-
         # 保险 1：超时检查
         elapsed = time.time() - start_time
         if elapsed > TIMEOUT_SECONDS:
@@ -82,7 +87,7 @@ def agent_loop(user_input, mock_llm):
             return response["content"]
 
         if response["type"] == "tool_use":
-            tool_name  = response["name"]
+            tool_name = response["name"]
             tool_input = response["input"]
 
             # 保险 2：工具执行错误不崩溃

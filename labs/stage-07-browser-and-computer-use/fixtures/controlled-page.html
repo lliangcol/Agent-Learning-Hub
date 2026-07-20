@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Controlled Browser Lab</title>
+  </head>
+  <body>
+    <main data-fixture-version="2">
+      <h1>受控浏览器实验</h1>
+      <p>这是合成测试页，不包含账号、验证码或外部请求。</p>
+      <button id="show-evidence-v2" type="button">显示证据</button>
+      <button id="show-dialog" type="button">打开确认弹窗</button>
+      <p id="evidence" hidden>synthetic-evidence-07</p>
+      <dialog id="confirmation">
+        <p>受控弹窗</p>
+        <button id="close-dialog" type="button">关闭</button>
+      </dialog>
+    </main>
+    <script>
+      document.querySelector("#show-evidence-v2").addEventListener("click", () => {
+        document.querySelector("#evidence").hidden = false;
+      });
+      document.querySelector("#show-dialog").addEventListener("click", () => {
+        document.querySelector("#confirmation").showModal();
+      });
+      document.querySelector("#close-dialog").addEventListener("click", () => {
+        document.querySelector("#confirmation").close();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agent-learning-hub"
+version = "2.0.0rc1"
+description = "A verifiable, offline-first learning lab for AI agents"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [{ name = "Agent Learning Hub contributors" }]
+dependencies = [
+  "jsonschema>=4.23,<5",
+  "PyYAML>=6.0.2,<7",
+]
+
+[project.optional-dependencies]
+provider = ["openai>=2.0,<3"]
+protocol = ["mcp==1.28.1"]
+site = [
+  "mkdocs>=1.6,<2",
+  "mkdocs-material>=9.6,<10",
+]
+dev = [
+  "mypy>=1.17,<2",
+  "pip-audit>=2.10.1,<3",
+  "pytest>=9.0.3,<10",
+  "pytest-cov>=6.2,<7",
+  "ruff>=0.12,<1",
+  "types-jsonschema>=4.25,<5",
+  "types-PyYAML>=6.0.12,<7",
+]
+
+[project.scripts]
+alh-validate-content = "agent_learning_hub.content:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/agent_learning_hub"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+extend-exclude = ["workbook/archive/legacy-v1"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "S", "SIM", "RUF"]
+ignore = ["S101", "RUF001", "RUF002", "RUF003"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+packages = ["agent_learning_hub"]
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-markers --strict-config --import-mode=importlib"
+testpaths = ["tests", "labs"]
+markers = [
+  "integration: integration tests",
+  "security: security regression tests",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["agent_learning_hub"]
+
+[tool.coverage.report]
+fail_under = 85
+show_missing = true

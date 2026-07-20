@@ -8,15 +8,24 @@ import re
 from collections import Counter
 
 DOCUMENTS = [
-    ("doc1", "Agent 是能够感知环境、做出决策并执行动作以达成目标的系统。"
-             "一个典型的 agent loop 包括：接收任务、模型决策、可选的工具调用、"
-             "执行工具、把结果喂回模型、模型继续或给出最终答案。"),
-    ("doc2", "检索增强生成（RAG）用来解决模型参数记忆静态、不包含私有数据的问题。"
-             "RAG 的核心步骤是 chunk、embed、retrieve、answer with citations。"
-             "chunk 太大会让检索精度下降，太小会丢失上下文。"),
-    ("doc3", "短期上下文指当前这一次对话或这一次 agent loop 里传给模型的 messages 列表；"
-             "会话记忆跨越多轮对话但会话结束后可能丢失；长期记忆持久化到会话之外，"
-             "通常存在向量数据库或文件中。"),
+    (
+        "doc1",
+        "Agent 是能够感知环境、做出决策并执行动作以达成目标的系统。"
+        "一个典型的 agent loop 包括：接收任务、模型决策、可选的工具调用、"
+        "执行工具、把结果喂回模型、模型继续或给出最终答案。",
+    ),
+    (
+        "doc2",
+        "检索增强生成（RAG）用来解决模型参数记忆静态、不包含私有数据的问题。"
+        "RAG 的核心步骤是 chunk、embed、retrieve、answer with citations。"
+        "chunk 太大会让检索精度下降，太小会丢失上下文。",
+    ),
+    (
+        "doc3",
+        "短期上下文指当前这一次对话或这一次 agent loop 里传给模型的 messages 列表；"
+        "会话记忆跨越多轮对话但会话结束后可能丢失；长期记忆持久化到会话之外，"
+        "通常存在向量数据库或文件中。",
+    ),
 ]
 
 
@@ -44,7 +53,7 @@ def embed(text, vocab):
 
 
 def cosine_similarity(vec_a, vec_b):
-    dot = sum(a * b for a, b in zip(vec_a, vec_b))
+    dot = sum(a * b for a, b in zip(vec_a, vec_b, strict=True))
     norm_a = math.sqrt(sum(a * a for a in vec_a))
     norm_b = math.sqrt(sum(b * b for b in vec_b))
     if norm_a == 0 or norm_b == 0:

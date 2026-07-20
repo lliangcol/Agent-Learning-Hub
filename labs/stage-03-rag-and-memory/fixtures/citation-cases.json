@@ -1,0 +1,21 @@
+{
+  "review_type": "human_annotated_fixed_set",
+  "claims": {
+    "claim-rag": "RAG 先检索再生成",
+    "claim-memory": "长期记忆需要删除策略",
+    "claim-weather": "今天会下雨"
+  },
+  "citations": {
+    "claim-rag": ["rag-1"],
+    "claim-memory": ["memory-1"],
+    "claim-weather": ["rag-1"]
+  },
+  "required_claim_ids": ["claim-rag", "claim-memory", "claim-weather"],
+  "supported_pairs": [
+    ["claim-rag", "rag-1"],
+    ["claim-memory", "memory-1"]
+  ],
+  "expected_issues": [
+    ["claim-weather", "unsupported_claim"]
+  ]
+}

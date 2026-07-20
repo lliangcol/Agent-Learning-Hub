@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schema_version", "projects"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "projects": {
+      "type": "array",
+      "minItems": 11,
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "track", "difficulty", "required", "prerequisite_task_ids", "artifact", "rubric", "validation_commands", "safety_notes", "estimated_effort", "status"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^P[0-9]{2}$" },
+          "title": { "type": "string", "minLength": 1 },
+          "track": { "type": "string", "minLength": 1 },
+          "difficulty": { "enum": ["beginner", "intermediate", "advanced"] },
+          "required": { "type": "boolean" },
+          "prerequisite_task_ids": { "type": "array", "items": { "type": "string", "pattern": "^S[0-9]{2}-T[0-9]{2}$" }, "uniqueItems": true },
+          "artifact": { "type": "string", "minLength": 1 },
+          "rubric": { "type": "array", "minItems": 2, "items": { "type": "string", "minLength": 1 } },
+          "validation_commands": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+          "safety_notes": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+          "estimated_effort": { "type": "string", "minLength": 1 },
+          "status": { "enum": ["draft", "active", "deprecated", "archived"] }
+        }
+      }
+    }
+  }
+}

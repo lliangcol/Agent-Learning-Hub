@@ -7,17 +7,17 @@ import math
 import re
 from collections import Counter
 
-
 # ---------- 复用 Task 1 的简化 embedding，用于长期记忆检索 ----------
 # 这里用字符 bigram 代替 Task 1 的按词切分：中文没有空格分词，
 # "用户在哪工作" 会被 \w+ 整体当成一个词，导致和任何别的中文短语都匹配不上。
 # 按字符两两滑窗切分，query 和内容之间只要有局部重叠的字符对，就能算出非零相似度。
 
+
 def tokenize(text):
     cleaned = re.sub(r"[^\w]", "", text.lower())
     if len(cleaned) < 2:
         return [cleaned] if cleaned else []
-    return [cleaned[i:i + 2] for i in range(len(cleaned) - 1)]
+    return [cleaned[i : i + 2] for i in range(len(cleaned) - 1)]
 
 
 def embed(text, vocab):
@@ -26,7 +26,7 @@ def embed(text, vocab):
 
 
 def cosine_similarity(vec_a, vec_b):
-    dot = sum(a * b for a, b in zip(vec_a, vec_b))
+    dot = sum(a * b for a, b in zip(vec_a, vec_b, strict=True))
     norm_a = math.sqrt(sum(a * a for a in vec_a))
     norm_b = math.sqrt(sum(b * b for b in vec_b))
     if norm_a == 0 or norm_b == 0:
@@ -36,13 +36,14 @@ def cosine_similarity(vec_a, vec_b):
 
 # ---------- 会话记忆：滑动窗口 + 摘要压缩 ----------
 
+
 class SessionMemory:
     """管理一次对话内的多轮消息；超过窗口的老消息压缩成摘要，而不是无限累积。"""
 
     def __init__(self, window_size=4):
         self.window_size = window_size
         self.messages = []  # 完整历史，仅用于记录/审计
-        self.summary = ""   # 被裁剪掉的老消息的摘要
+        self.summary = ""  # 被裁剪掉的老消息的摘要
 
     def add_message(self, role, content):
         self.messages.append({"role": role, "content": content})
@@ -58,18 +59,19 @@ class SessionMemory:
             return list(self.messages)
 
         dropped = self.messages[: -self.window_size]
-        recent = self.messages[-self.window_size:]
+        recent = self.messages[-self.window_size :]
         self.summary = self._mock_summarize(dropped)
-        return [{"role": "system", "content": self.summary}] + recent
+        return [{"role": "system", "content": self.summary}, *recent]
 
 
 # ---------- 长期记忆：跨会话持久化 + 检索 + 覆盖更新 + 过期 ----------
+
 
 class LongTermMemory:
     """按 key 去重存储；同 key 写入直接覆盖旧值，而不是无限追加造成重复/矛盾记录。"""
 
     def __init__(self, ttl_steps=None):
-        self.store = {}      # key -> {"content", "vector", "written_at", "expires_at"}
+        self.store = {}  # key -> {"content", "vector", "written_at", "expires_at"}
         self.vocab = []
         self.ttl_steps = ttl_steps  # 多少个 step 后视为过期；None 表示不过期
 

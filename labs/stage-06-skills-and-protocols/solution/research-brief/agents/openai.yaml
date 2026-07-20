@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Brief"
+  short_description: "Produce a sourced research brief from local notes"
+  default_prompt: "Use $research-brief to turn these local notes into a concise sourced brief."

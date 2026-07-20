@@ -1,0 +1,23 @@
+[
+  {
+    "step": 1,
+    "observation": "旧选择器 #reveal 不存在，按可访问名称找到替代按钮",
+    "action": "click role=button name=显示证据",
+    "result": "synthetic-evidence-07 可见",
+    "stop_reason": null
+  },
+  {
+    "step": 2,
+    "observation": "发现受控弹窗按钮",
+    "action": "open and close dialog",
+    "result": "受控弹窗可见后关闭",
+    "stop_reason": null
+  },
+  {
+    "step": 3,
+    "observation": "缺失路由返回自定义 404",
+    "action": "stop without retrying external URLs",
+    "result": "load_failed_404",
+    "stop_reason": "completed_with_recovery"
+  }
+]

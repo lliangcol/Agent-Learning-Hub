@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/agent-learning-hub/roadmap.schema.json",
+  "type": "object",
+  "required": ["roadmap_version", "language_strategy", "stages"],
+  "additionalProperties": false,
+  "properties": {
+    "roadmap_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "language_strategy": { "type": "string", "minLength": 1 },
+    "stages": {
+      "type": "array",
+      "minItems": 10,
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "description", "tasks"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^S[0-9]{2}$" },
+          "title": { "type": "string", "minLength": 1 },
+          "description": { "type": "string", "minLength": 1 },
+          "tasks": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "#/$defs/task" }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "task": {
+      "type": "object",
+      "required": [
+        "id", "title", "status", "prerequisites", "learning_outcomes", "concepts",
+        "lab_path", "artifact", "rubric", "validation_commands", "failure_cases",
+        "safety_notes", "resources", "estimated_effort", "introduced_in", "last_reviewed_at"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^S[0-9]{2}-T[0-9]{2}$" },
+        "title": { "type": "string", "minLength": 1 },
+        "status": { "enum": ["draft", "active", "deprecated", "archived"] },
+        "prerequisites": { "type": "array", "items": { "type": "string", "pattern": "^S[0-9]{2}-T[0-9]{2}$" }, "uniqueItems": true },
+        "learning_outcomes": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "concepts": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "lab_path": { "type": ["string", "null"] },
+        "artifact": { "type": "string", "minLength": 1 },
+        "rubric": { "type": "array", "minItems": 2, "items": { "type": "string", "minLength": 1 } },
+        "validation_commands": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "failure_cases": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "safety_notes": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "resources": { "type": "array", "items": { "type": "string", "pattern": "^R[0-9]{3}$" }, "uniqueItems": true },
+        "estimated_effort": { "type": "string", "minLength": 1 },
+        "introduced_in": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+        "last_reviewed_at": { "type": "string", "format": "date" }
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+schema_version: 1.0.0
+name: Datawhale Agent Learning Hub
+repository: https://github.com/datawhalechina/Agent-Learning-Hub.git
+default_branch: main
+attribution_url: https://github.com/datawhalechina/Agent-Learning-Hub
+policy: report-only

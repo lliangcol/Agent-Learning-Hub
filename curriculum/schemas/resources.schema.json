@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schema_version", "resources"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "resources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "url", "source_type", "publisher", "stage_ids", "why_it_matters", "trust_level", "last_verified_at", "status", "replacement_id", "license_or_access_note"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^R[0-9]{3}$" },
+          "title": { "type": "string", "minLength": 1 },
+          "url": { "type": "string", "format": "uri", "pattern": "^https://" },
+          "source_type": { "enum": ["official_docs", "official_blog", "paper", "repository", "technical_blog"] },
+          "publisher": { "type": "string", "minLength": 1 },
+          "stage_ids": { "type": "array", "minItems": 1, "items": { "type": "string", "pattern": "^S[0-9]{2}$" }, "uniqueItems": true },
+          "why_it_matters": { "type": "string", "minLength": 1 },
+          "trust_level": { "enum": ["primary", "maintainer", "curated"] },
+          "last_verified_at": { "type": ["string", "null"], "format": "date" },
+          "status": { "enum": ["active", "suspect", "archived", "replaced"] },
+          "replacement_id": { "type": ["string", "null"], "pattern": "^R[0-9]{3}$" },
+          "license_or_access_note": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

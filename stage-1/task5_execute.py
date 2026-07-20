@@ -1,16 +1,13 @@
 # task5_execute.py — Task 5: 执行工具，把结果喂回模型
 
-import sys, io
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
-
+from agent_learning_hub.tools import safe_calculate
 
 # ── 工具函数（来自 Task 3） ─────────────────────────────────────────
 
+
 def calculator(expression):
-    try:
-        return {"result": eval(expression)}
-    except Exception as e:
-        return {"error": str(e)}
+    return safe_calculate(expression).as_dict()
+
 
 TOOL_REGISTRY = {
     "calculator": calculator,
@@ -18,6 +15,7 @@ TOOL_REGISTRY = {
 
 
 # ── mock LLM（模拟两轮对话） ────────────────────────────────────────
+
 
 def mock_llm(messages):
     # 第一轮：用户问了需要计算的问题，模型决定调用工具
@@ -36,6 +34,7 @@ def mock_llm(messages):
 
 # ── 核心：执行工具并把结果加回 messages ────────────────────────────
 
+
 def run_tool(tool_name, tool_input):
     if tool_name not in TOOL_REGISTRY:
         return {"error": f"未知工具：{tool_name}"}
@@ -44,25 +43,30 @@ def run_tool(tool_name, tool_input):
 
 def add_tool_result(messages, tool_name, tool_input, tool_output):
     # 把模型的 tool call 记录进去（assistant 说的）
-    messages.append({
-        "role": "assistant",
-        "content": {"type": "tool_use", "name": tool_name, "input": tool_input},
-    })
+    messages.append(
+        {
+            "role": "assistant",
+            "content": {"type": "tool_use", "name": tool_name, "input": tool_input},
+        }
+    )
     # 把工具执行结果记录进去（tool 返回的）
-    messages.append({
-        "role": "tool",
-        "name": tool_name,
-        "content": str(tool_output),
-    })
+    messages.append(
+        {
+            "role": "tool",
+            "name": tool_name,
+            "content": str(tool_output),
+        }
+    )
     return messages
 
 
 # ── 主流程 ──────────────────────────────────────────────────────────
 
+
 def chat(user_input):
     messages = [
         {"role": "system", "content": "你是一个助手，可以使用 calculator 工具。"},
-        {"role": "user",   "content": user_input},
+        {"role": "user", "content": user_input},
     ]
 
     print(f"用户：{user_input}")
@@ -73,7 +77,7 @@ def chat(user_input):
     print(f"[第一轮] 模型输出类型：{response['type']}")
 
     if response["type"] == "tool_use":
-        tool_name  = response["name"]
+        tool_name = response["name"]
         tool_input = response["input"]
         print(f"  → 调用工具：{tool_name}，参数：{tool_input}")
 

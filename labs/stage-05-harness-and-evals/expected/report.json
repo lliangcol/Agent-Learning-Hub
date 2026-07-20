@@ -1,0 +1,15 @@
+{
+  "runner": "typed-agent-runner",
+  "total": 20,
+  "passed": 20,
+  "success_rate": 1.0,
+  "required_metrics": [
+    "stop_reasons",
+    "total_steps",
+    "total_tool_calls",
+    "latency_ms",
+    "errors",
+    "cost"
+  ],
+  "cost": null
+}

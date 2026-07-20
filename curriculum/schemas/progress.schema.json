@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schema_version", "roadmap_version", "updated_at", "task_progress", "project_progress"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "roadmap_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "origin": { "type": ["string", "null"] },
+    "task_progress": { "type": "object", "additionalProperties": { "$ref": "#/$defs/progressRecord" } },
+    "project_progress": { "type": "object", "additionalProperties": { "$ref": "#/$defs/progressRecord" } }
+  },
+  "$defs": {
+    "progressRecord": {
+      "type": "object",
+      "required": ["state", "updated_at", "evidence_paths", "review", "environment", "next_anchor"],
+      "additionalProperties": false,
+      "properties": {
+        "state": { "enum": ["not_started", "learning", "concept_verified", "lab_verified_offline", "lab_verified_live", "complete", "blocked", "needs_revalidation", "validation_failed"] },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "evidence_paths": { "type": "array", "items": { "type": "string" } },
+        "review": { "type": "string" },
+        "environment": { "type": "string" },
+        "next_anchor": { "type": "string" }
+      }
+    }
+  }
+}

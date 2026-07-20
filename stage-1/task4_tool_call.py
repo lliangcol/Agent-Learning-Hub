@@ -1,10 +1,7 @@
 # task4_tool_call.py — Task 4: 解析模型的 tool call
 
-import sys, io, json
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
-
-
 # ── mock：模拟模型的两种输出 ────────────────────────────────────────
+
 
 def mock_llm_text(messages):
     """模拟普通文字回复"""
@@ -24,6 +21,7 @@ def mock_llm_tool_call(messages):
 
 
 # ── 解析函数 ────────────────────────────────────────────────────────
+
 
 def parse_response(response):
     """

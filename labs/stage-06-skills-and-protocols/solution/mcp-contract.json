@@ -1,0 +1,11 @@
+{
+  "name": "read_course_note",
+  "description": "Read one explicitly named synthetic course note.",
+  "inputSchema": {
+    "type": "object",
+    "properties": { "note_id": { "type": "string", "pattern": "^NOTE-[0-9]{2}$" } },
+    "required": ["note_id"],
+    "additionalProperties": false
+  },
+  "annotations": { "readOnlyHint": true, "destructiveHint": false, "openWorldHint": false }
+}

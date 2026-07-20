@@ -1,6 +1,5 @@
 # chat.py — Task 1: 用 mock 模拟一次 LLM 对话
-import sys, io
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
+
 
 def mock_llm(messages):
     """
@@ -14,7 +13,7 @@ def mock_llm(messages):
 def chat(user_input):
     messages = [
         {"role": "system", "content": "你是一个助手。"},
-        {"role": "user",   "content": user_input},
+        {"role": "user", "content": user_input},
     ]
 
     reply = mock_llm(messages)

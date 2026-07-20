@@ -1,0 +1,12 @@
+{
+  "direction": "research-assistant",
+  "user": "synthetic learner",
+  "task": "local research",
+  "success_criteria": "all source-backed claims cited and unsafe cases stopped",
+  "eval_dataset": "fixtures/evals.json",
+  "permissions": "read-only local fixtures",
+  "logging": "redacted local trace containing case IDs and stop reasons only",
+  "deployment": "local CLI",
+  "limitations": "no live web, provider, account, message, or production data",
+  "rollback": "delete local output"
+}

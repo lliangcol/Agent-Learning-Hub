@@ -1,0 +1,1059 @@
+schema_version: 2.0.0
+resources:
+- id: R001
+  title: 'Anthropic: Building effective agents'
+  url: https://www.anthropic.com/engineering/building-effective-agents
+  source_type: official_docs
+  publisher: www.anthropic.com
+  stage_ids:
+  - S00
+  why_it_matters: Agent 设计入门必读，讲清 workflow 和 agent 的边界。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R002
+  title: Claude Code Overview
+  url: https://code.claude.com/docs/en/overview
+  source_type: official_docs
+  publisher: code.claude.com
+  stage_ids:
+  - S00
+  why_it_matters: 当前最值得研究的 coding agent 产品文档入口。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R003
+  title: Claude Code Subagents
+  url: https://code.claude.com/docs/en/sub-agents
+  source_type: official_docs
+  publisher: code.claude.com
+  stage_ids:
+  - S08
+  why_it_matters: 学任务拆分、上下文隔离、专用子代理。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R004
+  title: Claude Code Hooks
+  url: https://code.claude.com/docs/en/hooks
+  source_type: official_docs
+  publisher: code.claude.com
+  stage_ids:
+  - S00
+  why_it_matters: 学如何拦截、校验和扩展 agent 行为。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R005
+  title: Claude Code GitHub Actions
+  url: https://docs.claude.com/en/docs/claude-code/github-actions
+  source_type: official_docs
+  publisher: docs.claude.com
+  stage_ids:
+  - S00
+  why_it_matters: 学 coding agent 如何进入 PR / issue 工作流。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R006
+  title: Claude Code Advanced Patterns
+  url: https://resources.anthropic.com/hubfs/Claude%20Code%20Advanced%20Patterns_%20Subagents%2C%20MCP%2C%20and%20Scaling%20to%20Real%20Codebases.pdf
+  source_type: official_docs
+  publisher: resources.anthropic.com
+  stage_ids:
+  - S06
+  - S08
+  why_it_matters: Anthropic 官方材料，覆盖 subagents、MCP 和真实代码库扩展。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R007
+  title: 'OpenAI: A practical guide to building agents'
+  url: https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/
+  source_type: official_docs
+  publisher: openai.com
+  stage_ids:
+  - S00
+  why_it_matters: 面向产品和工程团队的 agent 落地指南。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: suspect
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R008
+  title: 'OpenAI: New tools for building agents'
+  url: https://openai.com/index/new-tools-for-building-agents/
+  source_type: official_docs
+  publisher: openai.com
+  stage_ids:
+  - S00
+  why_it_matters: Responses API、Agents SDK、工具和 tracing 的官方介绍。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: suspect
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R009
+  title: OpenAI Agents SDK
+  url: https://platform.openai.com/docs/guides/agents-sdk/
+  source_type: official_docs
+  publisher: platform.openai.com
+  stage_ids:
+  - S00
+  why_it_matters: OpenAI 原生 agent 开发入口。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R010
+  title: Claude Tool Use
+  url: https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview
+  source_type: official_docs
+  publisher: docs.anthropic.com
+  stage_ids:
+  - S04
+  why_it_matters: Claude 工具调用机制。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R011
+  title: Claude Computer Use
+  url: https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/computer-use-tool
+  source_type: official_docs
+  publisher: docs.anthropic.com
+  stage_ids:
+  - S07
+  why_it_matters: 电脑操作类 agent 的官方参考。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R012
+  title: Gemini Function Calling
+  url: https://ai.google.dev/gemini-api/docs/function-calling
+  source_type: official_docs
+  publisher: ai.google.dev
+  stage_ids:
+  - S04
+  why_it_matters: Gemini 工具调用官方文档。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R013
+  title: Gemini Code Execution
+  url: https://ai.google.dev/gemini-api/docs/code-execution
+  source_type: official_docs
+  publisher: ai.google.dev
+  stage_ids:
+  - S00
+  why_it_matters: Gemini 代码执行工具。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R014
+  title: Google Agent Development Kit
+  url: https://google.github.io/adk-docs/
+  source_type: official_docs
+  publisher: google.github.io
+  stage_ids:
+  - S00
+  why_it_matters: Google 的 agent 开发框架。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R015
+  title: Model Context Protocol
+  url: https://modelcontextprotocol.io/
+  source_type: technical_blog
+  publisher: modelcontextprotocol.io
+  stage_ids:
+  - S06
+  why_it_matters: Agent 连接工具和数据源的重要协议。
+  trust_level: curated
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R016
+  title: learn-claude-code
+  url: https://github.com/shareAI-lab/learn-claude-code
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S05
+  - S08
+  why_it_matters: agent loop、tool registry、session、context compaction、gateway、trace、subagents。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R017
+  title: claw0
+  url: https://github.com/shareAI-lab/claw0
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S05
+  - S08
+  why_it_matters: agent loop、tool registry、session、context compaction、gateway、trace、subagents。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R018
+  title: hello-agents
+  url: https://github.com/datawhalechina/hello-agents
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S05
+  - S08
+  why_it_matters: agent loop、tool registry、session、context compaction、gateway、trace、subagents。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R019
+  title: OpenClaw
+  url: https://github.com/openclaw/openclaw
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S03
+  - S04
+  - S06
+  why_it_matters: 长运行、skills、记忆、消息入口、权限、安全审计。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R020
+  title: Hermes Agent
+  url: https://github.com/NousResearch/hermes-agent
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S03
+  - S04
+  - S06
+  why_it_matters: 长运行、skills、记忆、消息入口、权限、安全审计。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R021
+  title: CyberClaw
+  url: https://github.com/ttguy0707/CyberClaw
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S03
+  - S04
+  - S06
+  why_it_matters: 长运行、skills、记忆、消息入口、权限、安全审计。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R022
+  title: OpenAI Codex
+  url: https://github.com/openai/codex
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S00
+  why_it_matters: 真实代码库编辑、shell、测试、sandbox、PR 工作流。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R023
+  title: OpenCode
+  url: https://github.com/opencode-ai/opencode
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S00
+  why_it_matters: 真实代码库编辑、shell、测试、sandbox、PR 工作流。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R024
+  title: OpenHands
+  url: https://github.com/All-Hands-AI/OpenHands
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S00
+  why_it_matters: 真实代码库编辑、shell、测试、sandbox、PR 工作流。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R025
+  title: SWE-agent
+  url: https://github.com/SWE-agent/SWE-agent
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S00
+  why_it_matters: 真实代码库编辑、shell、测试、sandbox、PR 工作流。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R026
+  title: pi
+  url: https://github.com/earendil-works/pi
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S00
+  why_it_matters: 真实代码库编辑、shell、测试、sandbox、PR 工作流。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R027
+  title: DeerFlow
+  url: https://github.com/bytedance/deer-flow
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S03
+  why_it_matters: 2.0 是通用长任务 Agent runtime，可研究 sandbox、memory、skills、subagents、message gateway 与 trace；Deep Research 实现保留在 1.x 分支。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R028
+  title: LlamaIndex
+  url: https://docs.llamaindex.ai/
+  source_type: technical_blog
+  publisher: docs.llamaindex.ai
+  stage_ids:
+  - S03
+  why_it_matters: 搜索、抓取、检索、rerank、引用、报告生成。
+  trust_level: curated
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R029
+  title: GenAI_Agents
+  url: https://github.com/NirDiamant/GenAI_Agents
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S08
+  why_it_matters: 横向看 ReAct、Plan-and-Execute、Multi-Agent、production patterns。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R030
+  title: smolagents
+  url: https://github.com/huggingface/smolagents
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S08
+  why_it_matters: 横向看 ReAct、Plan-and-Execute、Multi-Agent、production patterns。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R031
+  title: agents-towards-production
+  url: https://github.com/NirDiamant/agents-towards-production
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S08
+  why_it_matters: 横向看 ReAct、Plan-and-Execute、Multi-Agent、production patterns。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R032
+  title: browser-use
+  url: https://github.com/browser-use/browser-use
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S07
+  why_it_matters: 浏览器/桌面操作、视觉理解、动作空间、失败恢复。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R033
+  title: UI-TARS-desktop
+  url: https://github.com/bytedance/UI-TARS-desktop
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S07
+  why_it_matters: 浏览器/桌面操作、视觉理解、动作空间、失败恢复。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R034
+  title: Claude Code Skills
+  url: https://code.claude.com/docs/en/skills
+  source_type: official_docs
+  publisher: code.claude.com
+  stage_ids:
+  - S06
+  why_it_matters: 把一类任务的流程知识、脚本、模板和验收标准打包成可复用能力。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R035
+  title: OpenClaw Skills
+  url: https://github.com/openclaw/openclaw/blob/main/docs/tools/skills.md
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S06
+  why_it_matters: 把一类任务的流程知识、脚本、模板和验收标准打包成可复用能力。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R036
+  title: Agent2Agent Protocol
+  url: https://a2a-protocol.org/latest/specification/
+  source_type: technical_blog
+  publisher: a2a-protocol.org
+  stage_ids:
+  - S06
+  why_it_matters: 让不同 agent 之间发现、通信和协作。
+  trust_level: curated
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R037
+  title: Agent Client Protocol
+  url: https://agentclientprotocol.com/
+  source_type: technical_blog
+  publisher: agentclientprotocol.com
+  stage_ids:
+  - S06
+  why_it_matters: 让编辑器、终端、IDE、宿主应用和 agent 之间形成统一接口。
+  trust_level: curated
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R038
+  title: SWE-Skills-Bench
+  url: https://arxiv.org/abs/2603.15401
+  source_type: paper
+  publisher: arxiv.org
+  stage_ids:
+  - S06
+  why_it_matters: 评估 skills 是否真的提升成功率，而不是制造新的 prompt 噪声。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: suspect
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R039
+  title: Agent Skills analysis
+  url: https://arxiv.org/abs/2602.08004
+  source_type: paper
+  publisher: arxiv.org
+  stage_ids:
+  - S06
+  why_it_matters: 评估 skills 是否真的提升成功率，而不是制造新的 prompt 噪声。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: suspect
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R040
+  title: LangGraph
+  url: https://langchain-ai.github.io/langgraph/
+  source_type: technical_blog
+  publisher: langchain-ai.github.io
+  stage_ids:
+  - S00
+  why_it_matters: 状态图和可控 agent 编排，仍然值得作为工程基础学习。
+  trust_level: curated
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R041
+  title: Qwen-Agent
+  url: https://github.com/QwenLM/Qwen-Agent
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S03
+  - S06
+  why_it_matters: 国产模型生态里的工具调用、RAG、MCP agent 框架。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R042
+  title: Pydantic AI
+  url: https://pydantic.dev/docs/ai/core-concepts/agent/
+  source_type: technical_blog
+  publisher: pydantic.dev
+  stage_ids:
+  - S04
+  why_it_matters: 类型安全和结构化输出，适合生产 Python agent。
+  trust_level: curated
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R043
+  title: CrewAI
+  url: https://docs.crewai.com/
+  source_type: technical_blog
+  publisher: docs.crewai.com
+  stage_ids:
+  - S05
+  why_it_matters: 可了解 role/task/crew 抽象，但很多场景已经被更强的 coding agent / harness 形态覆盖。
+  trust_level: curated
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R044
+  title: AutoGen
+  url: https://microsoft.github.io/autogen/
+  source_type: technical_blog
+  publisher: microsoft.github.io
+  stage_ids:
+  - S08
+  why_it_matters: 多 agent 对话框架经典项目，适合了解历史和论文，不必重押。
+  trust_level: curated
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R045
+  title: LangChain Agents
+  url: https://docs.langchain.com/
+  source_type: technical_blog
+  publisher: docs.langchain.com
+  stage_ids:
+  - S00
+  why_it_matters: 生态仍重要，但建议重点转向 LangGraph 和具体工程模式。
+  trust_level: curated
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R046
+  title: ReAct
+  url: https://arxiv.org/abs/2210.03629
+  source_type: paper
+  publisher: arxiv.org
+  stage_ids:
+  - S00
+  why_it_matters: Reasoning + acting 的基础范式。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: suspect
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R047
+  title: Toolformer
+  url: https://arxiv.org/abs/2302.04761
+  source_type: paper
+  publisher: arxiv.org
+  stage_ids:
+  - S00
+  why_it_matters: 模型学习何时调用工具。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: suspect
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R048
+  title: Reflexion
+  url: https://arxiv.org/abs/2303.11366
+  source_type: paper
+  publisher: arxiv.org
+  stage_ids:
+  - S00
+  why_it_matters: 语言反馈和自我改进。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: suspect
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R049
+  title: Generative Agents
+  url: https://arxiv.org/abs/2304.03442
+  source_type: paper
+  publisher: arxiv.org
+  stage_ids:
+  - S03
+  why_it_matters: 记忆、反思、规划驱动的模拟 agent。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: suspect
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R050
+  title: Voyager
+  url: https://arxiv.org/abs/2305.16291
+  source_type: paper
+  publisher: arxiv.org
+  stage_ids:
+  - S00
+  why_it_matters: 开放世界中的长期学习 agent。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: suspect
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R051
+  title: AutoGen
+  url: https://arxiv.org/abs/2308.08155
+  source_type: paper
+  publisher: arxiv.org
+  stage_ids:
+  - S08
+  why_it_matters: 多 agent 对话框架。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: suspect
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R052
+  title: AgentBench
+  url: https://arxiv.org/abs/2308.03688
+  source_type: paper
+  publisher: arxiv.org
+  stage_ids:
+  - S00
+  why_it_matters: Agent 能力评测。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: suspect
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R053
+  title: WebArena
+  url: https://arxiv.org/abs/2307.13854
+  source_type: paper
+  publisher: arxiv.org
+  stage_ids:
+  - S05
+  - S07
+  why_it_matters: 真实网页环境下的 agent benchmark。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: suspect
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R054
+  title: SWE-bench
+  url: https://arxiv.org/abs/2310.06770
+  source_type: paper
+  publisher: arxiv.org
+  stage_ids:
+  - S00
+  why_it_matters: 真实 GitHub issue 修复评测。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: suspect
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R055
+  title: SWE-agent
+  url: https://arxiv.org/abs/2405.15793
+  source_type: paper
+  publisher: arxiv.org
+  stage_ids:
+  - S07
+  why_it_matters: 软件工程 agent 的 agent-computer interface。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: suspect
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R056
+  title: Dive into Claude Code
+  url: https://arxiv.org/abs/2604.14228
+  source_type: paper
+  publisher: arxiv.org
+  stage_ids:
+  - S04
+  - S05
+  why_it_matters: 从系统设计角度分析 Claude Code 这类 coding agent 的 harness、权限、压缩和扩展机制。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: suspect
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R057
+  title: AI Harness Engineering
+  url: https://arxiv.org/abs/2605.13357
+  source_type: paper
+  publisher: arxiv.org
+  stage_ids:
+  - S05
+  why_it_matters: 把 harness 作为 agent 能力来源来研究。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: suspect
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R058
+  title: Configuring Agentic AI Coding Tools
+  url: https://arxiv.org/abs/2602.14690
+  source_type: paper
+  publisher: arxiv.org
+  stage_ids:
+  - S00
+  why_it_matters: 对 Claude Code、Codex、Gemini、Cursor 等 coding tools 的配置机制分析。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: suspect
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R059
+  title: Your Agent, Their Asset
+  url: https://arxiv.org/abs/2604.04759
+  source_type: paper
+  publisher: arxiv.org
+  stage_ids:
+  - S04
+  why_it_matters: OpenClaw 等本地 agent 的真实安全风险分析。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: suspect
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R060
+  title: langchain-ai/langgraph
+  url: https://github.com/langchain-ai/langgraph
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S00
+  why_it_matters: 状态图和可控 agent 编排。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R061
+  title: openai/openai-agents-python
+  url: https://github.com/openai/openai-agents-python
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S00
+  why_it_matters: OpenAI Agents SDK Python。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R062
+  title: microsoft/ai-agents-for-beginners
+  url: https://github.com/microsoft/ai-agents-for-beginners
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S00
+  why_it_matters: 系统化入门课程。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R063
+  title: jjyaoao/HelloAgents
+  url: https://github.com/jjyaoao/HelloAgents
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S05
+  - S08
+  why_it_matters: 基于 OpenAI 原生 API 的生产级多智能体框架，覆盖 ToolResponse、上下文工程、会话持久化、子代理、TraceLogger 等。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R064
+  title: 'Lilian Weng: LLM Powered Autonomous Agents'
+  url: https://lilianweng.github.io/posts/2023-06-23-agent/
+  source_type: technical_blog
+  publisher: lilianweng.github.io
+  stage_ids:
+  - S03
+  why_it_matters: 经典长文，系统整理 agent 架构、记忆、规划和工具使用。
+  trust_level: curated
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R065
+  title: 'Simon Willison: AI/LLM writing'
+  url: https://simonwillison.net/tags/llms/
+  source_type: technical_blog
+  publisher: simonwillison.net
+  stage_ids:
+  - S00
+  why_it_matters: 非常务实的 LLM 工程观察，适合补工程直觉。
+  trust_level: curated
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R066
+  title: LangChain Blog
+  url: https://blog.langchain.com/
+  source_type: technical_blog
+  publisher: blog.langchain.com
+  stage_ids:
+  - S00
+  why_it_matters: LangGraph、LangSmith、agent 工程实践。
+  trust_level: curated
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R067
+  title: 'Google Developers Blog: ADK'
+  url: https://developers.googleblog.com/agent-development-kit-easy-to-build-multi-agent-applications/
+  source_type: official_docs
+  publisher: developers.googleblog.com
+  stage_ids:
+  - S00
+  why_it_matters: Google ADK 官方发布文章。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R068
+  title: Claude Code Common Workflows
+  url: https://code.claude.com/docs/en/tutorials
+  source_type: official_docs
+  publisher: code.claude.com
+  stage_ids:
+  - S00
+  why_it_matters: 官方工作流教程，适合学日常使用和项目协作。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R069
+  title: Claude Code 源码解析
+  url: https://claudecoding.dev/
+  source_type: technical_blog
+  publisher: claudecoding.dev
+  stage_ids:
+  - S00
+  why_it_matters: 中文架构解读，适合按模块理解实现思路。
+  trust_level: curated
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R070
+  title: Claude Code 源码分析地图
+  url: https://code.claudecn.com/
+  source_type: technical_blog
+  publisher: code.claudecn.com
+  stage_ids:
+  - S00
+  why_it_matters: 用地图方式拆解 agent loop、工具、命令和多代理协作。
+  trust_level: curated
+  last_verified_at: '2026-07-20'
+  status: suspect
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R071
+  title: Agentic Education
+  url: https://arxiv.org/abs/2604.17460
+  source_type: paper
+  publisher: arxiv.org
+  stage_ids:
+  - S00
+  why_it_matters: 用 Claude Code 学 Claude Code 的交互式课程思路。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: suspect
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R072
+  title: GPT Researcher
+  url: https://github.com/assafelovic/gpt-researcher
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S03
+  why_it_matters: 研究开源深度研究流程中的搜索、来源筛选、引用与报告生成。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R073
+  title: Open Deep Research
+  url: https://github.com/langchain-ai/open_deep_research
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S03
+  why_it_matters: 可对照研究可配置研究 Agent、检索与报告生成架构。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R074
+  title: Model Context Protocol Servers
+  url: https://github.com/modelcontextprotocol/servers
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S06
+  why_it_matters: MCP 官方参考服务器合集，用于学习协议接入、能力边界与安全注意事项。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R075
+  title: SkillOpt
+  url: https://github.com/microsoft/SkillOpt
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S05
+  - S06
+  why_it_matters: 研究 Skill 的优化与可验证评测，而不是只比较提示词形式。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R076
+  title: GAIA benchmark
+  url: https://arxiv.org/abs/2311.12983
+  source_type: paper
+  publisher: arxiv.org
+  stage_ids:
+  - S05
+  why_it_matters: 通用助手基准，覆盖推理、工具使用与多模态任务。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: suspect
+  replacement_id: null
+  license_or_access_note: 仅提供论文链接；不在仓库中再分发论文正文。
+- id: R077
+  title: OSWorld benchmark
+  url: https://arxiv.org/abs/2404.07972
+  source_type: paper
+  publisher: arxiv.org
+  stage_ids:
+  - S05
+  - S07
+  why_it_matters: 在真实操作系统环境评估多模态计算机操作 Agent。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: suspect
+  replacement_id: null
+  license_or_access_note: 仅提供论文链接；不在仓库中再分发论文正文。
+- id: R078
+  title: tau-bench
+  url: https://arxiv.org/abs/2406.12045
+  source_type: paper
+  publisher: arxiv.org
+  stage_ids:
+  - S05
+  why_it_matters: 评估工具、Agent 与用户动态交互中的可靠性与一致成功率。
+  trust_level: primary
+  last_verified_at: '2026-07-20'
+  status: suspect
+  replacement_id: null
+  license_or_access_note: 仅提供论文链接；不在仓库中再分发论文正文。
+- id: R079
+  title: Aider
+  url: https://github.com/Aider-AI/aider
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S09
+  why_it_matters: 研究终端代码 Agent 与 Git、模型及测试工作流的集成。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。
+- id: R080
+  title: Goose
+  url: https://github.com/block/goose
+  source_type: repository
+  publisher: github.com
+  stage_ids:
+  - S06
+  - S09
+  why_it_matters: 研究可扩展本地 Agent 的工具、扩展与 Skill 设计。
+  trust_level: maintainer
+  last_verified_at: '2026-07-20'
+  status: active
+  replacement_id: null
+  license_or_access_note: 仅提供链接；不在仓库中再分发外部内容。

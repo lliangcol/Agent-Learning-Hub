@@ -1,0 +1,22 @@
+[
+  {"id":"E01","scenario":"success"},
+  {"id":"E02","scenario":"success"},
+  {"id":"E03","scenario":"success"},
+  {"id":"E04","scenario":"success"},
+  {"id":"E05","scenario":"empty_result"},
+  {"id":"E06","scenario":"empty_result"},
+  {"id":"E07","scenario":"empty_result"},
+  {"id":"E08","scenario":"tool_error"},
+  {"id":"E09","scenario":"tool_error"},
+  {"id":"E10","scenario":"tool_error"},
+  {"id":"E11","scenario":"repeated_call"},
+  {"id":"E12","scenario":"repeated_call"},
+  {"id":"E13","scenario":"repeated_call"},
+  {"id":"E14","scenario":"denied"},
+  {"id":"E15","scenario":"denied"},
+  {"id":"E16","scenario":"denied"},
+  {"id":"E17","scenario":"unknown_response"},
+  {"id":"E18","scenario":"provider_error"},
+  {"id":"E19","scenario":"deadline"},
+  {"id":"E20","scenario":"tool_budget"}
+]
