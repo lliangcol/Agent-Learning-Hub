@@ -1,5 +1,10 @@
 # Stage 2: Learn Tool Use, RAG, And Memory
 
+> Legacy evidence note: Task 1 requires renewed Chinese retrieval and citation validation; Task 2
+> was not valid on Windows and the subprocess was not a sandbox; Task 3 was process-local rather
+> than persistent long-term memory. The V2 migration lowers these states instead of deleting the
+> learning record.
+
 来源：`README.md` -> `Learning Todo List` -> `Stage 2: Learn Tool Use, RAG, And Memory`
 
 ## 学习目标

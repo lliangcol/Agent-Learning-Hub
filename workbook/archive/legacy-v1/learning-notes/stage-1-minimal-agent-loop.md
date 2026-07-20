@@ -1,5 +1,9 @@
 # Stage 1: Build A Minimal Agent Loop
 
+> Legacy evidence note: this work used an offline mock. It does not prove that a real LLM API was
+> called. V2 records these tasks as concept/offline-lab evidence until live evidence is explicitly
+> required and provided.
+
 来源：`README.md` -> `Learning Todo List` -> `Stage 1: Build A Minimal Agent Loop`
 
 ## 学习目标

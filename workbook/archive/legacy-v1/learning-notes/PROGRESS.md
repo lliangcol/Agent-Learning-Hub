@@ -1,5 +1,10 @@
 # Learning Progress
 
+> Legacy snapshot: statements such as “已完成” below describe the V1 learner record. V2 migration
+> maps Stage 2 Task 1 to `needs_revalidation`, Task 2 to `validation_failed`, Task 3 to
+> `lab_verified_offline`, Task 4 to `learning`, and Task 5 to `not_started`. No real-API or
+> cross-process persistence evidence is implied.
+
 下次重开上下文时，先读这个文件。它只记录当前学习位置、续接锚点、待回答问题和完成规则。
 
 ## 当前学习位置

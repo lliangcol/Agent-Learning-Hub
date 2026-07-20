@@ -267,6 +267,7 @@ mark{background:rgba(255,200,0,0.35);color:inherit;border-radius:2px;padding:0 2
       <button class="tab-btn" data-tab="resources">精选资源</button>
     </nav>
     <div class="topbar-right">
+      <button class="tab-btn" id="exportLegacyDataBtn" type="button">导出 V1 数据</button>
       <div class="search-wrap">
         <span class="search-icon">🔍</span>
         <input type="text" class="search-input" id="searchInput" placeholder="搜索..." oninput="doSearch()">
@@ -632,6 +633,35 @@ let currentSidebarId = 'stage0';
 
 // ===== Storage =====
 const STORAGE_KEY = 'agent-learning-hub-state';
+function collectLegacyData() {
+  const notes = {};
+  for (let index = 0; index < localStorage.length; index += 1) {
+    const key = localStorage.key(index);
+    if (key && key.startsWith('note-')) {
+      notes[key] = localStorage.getItem(key);
+    }
+  }
+  return {
+    schema_version: '1.0.0',
+    exported_at: new Date().toISOString(),
+    origin: window.location.origin === 'null' ? 'file://' : window.location.origin,
+    state: localStorage.getItem(STORAGE_KEY),
+    notes,
+    theme: localStorage.getItem('agent-learning-theme'),
+  };
+}
+function exportLegacyData() {
+  const payload = JSON.stringify(collectLegacyData(), null, 2);
+  const blob = new Blob([payload], { type: 'application/json;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `agent-learning-hub-v1-${new Date().toISOString().replace(/[:.]/g, '-')}.json`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
 function loadState() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -1102,8 +1132,9 @@ function init() {
 
   // Tab clicks
   document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+    if (btn.dataset.tab) btn.addEventListener('click', () => switchTab(btn.dataset.tab));
   });
+  document.getElementById('exportLegacyDataBtn').addEventListener('click', exportLegacyData);
 
   // Mobile menu button visibility
   const mmb = document.querySelector('.mobile-menu-btn');
