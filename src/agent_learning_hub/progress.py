@@ -4,6 +4,7 @@ import json
 import os
 import shutil
 import tempfile
+from collections.abc import Mapping
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from pathlib import Path
@@ -42,22 +43,18 @@ class MigrationReport:
         }
 
 
-def status_for_task(new_id: str, *, checked: bool) -> tuple[str, bool]:
-    fixed = {
-        "S03-T01": "needs_revalidation",
-        "S04-T01": "validation_failed",
-        "S03-T02": "lab_verified_offline",
-        "S04-T02": "learning",
-        "S03-T03": "not_started",
-    }
-    if new_id in fixed:
-        state = fixed[new_id]
-        return state, checked and state not in {"complete", "lab_verified_live"}
+def status_for_task(
+    new_id: str,
+    *,
+    checked: bool,
+    checked_state_by_task: Mapping[str, str] | None = None,
+) -> tuple[str, bool]:
     if not checked:
         return "not_started", False
-    if new_id.startswith("S00-"):
-        return "complete", False
-    return "lab_verified_offline", True
+    state = (checked_state_by_task or {}).get(
+        new_id, "complete" if new_id.startswith("S00-") else "lab_verified_offline"
+    )
+    return state, state not in {"complete", "lab_verified_live"}
 
 
 def migrate_legacy_state(
@@ -65,6 +62,7 @@ def migrate_legacy_state(
     task_mapping: dict[str, str],
     project_mapping: dict[str, str],
     *,
+    checked_state_by_task: Mapping[str, str] | None = None,
     now: datetime | None = None,
 ) -> tuple[dict[str, Any], MigrationReport]:
     timestamp = (now or datetime.now(UTC)).astimezone(UTC).isoformat()
@@ -109,7 +107,11 @@ def migrate_legacy_state(
         if not new_id:
             report.unmapped.append(key)
             continue
-        state_name, downgraded = status_for_task(new_id, checked=raw_value)
+        state_name, downgraded = status_for_task(
+            new_id,
+            checked=raw_value,
+            checked_state_by_task=checked_state_by_task,
+        )
         task_progress[new_id] = progress_record(
             state_name,
             timestamp,

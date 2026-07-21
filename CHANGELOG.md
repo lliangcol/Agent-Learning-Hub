@@ -4,7 +4,7 @@
 
 ## Unreleased
 
-- 等待维护者确认 V1 各实际 origin 的浏览器状态导出/无数据结论。
+- V1 实际 origin 已由维护者确认并登记；若发现遗漏 origin，发布前须补充导出或无数据结论。
 - 等待 commit、push、RC tag、GitHub Release 与正式 Pages 部署的分别确认。
 
 ## 2.0.0-rc.1 - release candidate source

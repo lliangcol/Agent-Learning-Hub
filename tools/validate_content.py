@@ -129,12 +129,28 @@ def semantic_validation(errors: ValidationErrors) -> None:
     migration = load_yaml(CURRICULUM / "migrations" / "v1-to-v2.yaml")
     mapped_tasks = migration["task_mappings"]
     mapped_projects = migration["project_mappings"]
+    checked_states = migration.get("checked_state_by_task", {})
     if len(mapped_tasks) != 50 or {item["new_id"] for item in mapped_tasks} != set(tasks):
         errors.add(roadmap_path, "migrations", "V1 task mapping must cover exactly all 50 tasks")
     if len(mapped_projects) != 11 or {item["new_id"] for item in mapped_projects} != set(
         project_items
     ):
         errors.add(projects_path, "migrations", "V1 project mapping must cover all 11 projects")
+    valid_progress_states = {
+        "not_started",
+        "learning",
+        "concept_verified",
+        "lab_verified_offline",
+        "lab_verified_live",
+        "complete",
+        "blocked",
+        "needs_revalidation",
+        "validation_failed",
+    }
+    if not isinstance(checked_states, dict) or not set(checked_states).issubset(tasks):
+        errors.add(roadmap_path, "migrations.checked_state_by_task", "contains unknown task IDs")
+    elif any(state not in valid_progress_states for state in checked_states.values()):
+        errors.add(roadmap_path, "migrations.checked_state_by_task", "contains invalid states")
 
     stage_docs = list((CURRICULUM / "stages").glob("stage-*.md"))
     if len(stage_docs) != 10:

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 from typing import Any, cast
@@ -30,7 +31,7 @@ def render_roadmap(roadmap: dict[str, Any]) -> str:
         "",
         (
             "课程任务与可选项目分别统计。复选框只记录本地学习状态；"
-            "`complete` 仍需工作簿证据和 review。"
+            "勾选只表示 `concept_verified`，`complete` 仍需工作簿证据和 review。"
         ),
         "",
     ]
@@ -47,11 +48,31 @@ def render_roadmap(roadmap: dict[str, Any]) -> str:
         )
         for task in stage["tasks"]:
             task_id = task["id"]
-            title = escape_html(str(task["title"]))
-            lines.append(
-                f'<li class="progress-item" id="{task_id.lower()}">'
-                f'<input type="checkbox" id="check-{task_id}" data-task-id="{task_id}" disabled>'
-                f'<label for="check-{task_id}"><code>{task_id}</code> {title}</label></li>'
+            title = render_inline_links(str(task["title"]))
+            prerequisites = task["prerequisites"]
+            resources = task["resources"]
+            lines.extend(
+                [
+                    f'<li class="progress-item" id="{task_id.lower()}">',
+                    f'<input type="checkbox" id="check-{task_id}" '
+                    f'data-task-id="{task_id}" disabled>',
+                    f'<label for="check-{task_id}"><code>{task_id}</code> {title}</label>',
+                    '<details class="acceptance-details">',
+                    "<summary>查看前置条件与验收</summary>",
+                    "<dl>",
+                    f"<dt>前置任务</dt><dd>{render_codes(prerequisites, empty='无')}</dd>",
+                    f"<dt>学习成果</dt><dd>{render_items(task['learning_outcomes'])}</dd>",
+                    f"<dt>Lab</dt><dd>{render_code_value(task['lab_path'], empty='无')}</dd>",
+                    f"<dt>产出</dt><dd><code>{escape_html(str(task['artifact']))}</code></dd>",
+                    f"<dt>Rubric</dt><dd>{render_items(task['rubric'])}</dd>",
+                    f"<dt>验证命令</dt><dd>{render_codes(task['validation_commands'])}</dd>",
+                    f"<dt>失败场景</dt><dd>{render_items(task['failure_cases'])}</dd>",
+                    f"<dt>安全说明</dt><dd>{render_items(task['safety_notes'])}</dd>",
+                    f"<dt>资源</dt><dd>{render_resource_links(resources)}</dd>",
+                    "</dl>",
+                    "</details>",
+                    "</li>",
+                ]
             )
         lines.extend(["</ul>", ""])
     return "\n".join(lines)
@@ -72,13 +93,29 @@ def render_projects(projects: dict[str, Any]) -> str:
     ]
     for project in projects["projects"]:
         project_id = project["id"]
-        lines.append(
-            f'<li class="progress-item" id="{project_id.lower()}">'
-            f'<input type="checkbox" id="check-{project_id}" '
-            f'data-project-id="{project_id}" disabled>'
-            f'<label for="check-{project_id}"><code>{project_id}</code> '
-            f"{escape_html(str(project['title']))} · "
-            f"{escape_html(str(project['track']))}</label></li>"
+        lines.extend(
+            [
+                f'<li class="progress-item" id="{project_id.lower()}">',
+                f'<input type="checkbox" id="check-{project_id}" '
+                f'data-project-id="{project_id}" disabled>',
+                f'<label for="check-{project_id}"><code>{project_id}</code> '
+                f"{escape_html(str(project['title']))} · "
+                f"{escape_html(str(project['track']))}</label>",
+                '<details class="acceptance-details">',
+                "<summary>查看前置条件与验收</summary>",
+                "<dl>",
+                f"<dt>难度</dt><dd>{escape_html(str(project['difficulty']))}</dd>",
+                "<dt>前置任务</dt><dd>"
+                f"{render_codes(project['prerequisite_task_ids'], empty='无')}</dd>",
+                f"<dt>产出</dt><dd><code>{escape_html(str(project['artifact']))}</code></dd>",
+                f"<dt>Rubric</dt><dd>{render_items(project['rubric'])}</dd>",
+                f"<dt>验证命令</dt><dd>{render_codes(project['validation_commands'])}</dd>",
+                f"<dt>安全说明</dt><dd>{render_items(project['safety_notes'])}</dd>",
+                f"<dt>预计投入</dt><dd>{escape_html(str(project['estimated_effort']))}</dd>",
+                "</dl>",
+                "</details>",
+                "</li>",
+            ]
         )
     lines.extend(["</ul>", "", "项目全部可选，不计入课程任务总完成率。", ""])
     return "\n".join(lines)
@@ -114,6 +151,47 @@ def render_resources(resources: dict[str, Any]) -> str:
 def escape_html(text: str) -> str:
     return (
         text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
+    )
+
+
+_INLINE_LINK = re.compile(r"\[([^\]]+)\]\((https?://[^)]+)\)")
+
+
+def render_inline_links(text: str) -> str:
+    parts: list[str] = []
+    cursor = 0
+    for match in _INLINE_LINK.finditer(text):
+        parts.append(escape_html(text[cursor : match.start()]))
+        label, url = match.groups()
+        parts.append(f'<a href="{escape_html(url)}">{escape_html(label)}</a>')
+        cursor = match.end()
+    parts.append(escape_html(text[cursor:]))
+    return "".join(parts)
+
+
+def render_items(items: list[object]) -> str:
+    return "<ul>" + "".join(f"<li>{escape_html(str(item))}</li>" for item in items) + "</ul>"
+
+
+def render_codes(items: list[object], *, empty: str = "无") -> str:
+    if not items:
+        return escape_html(empty)
+    return "<br>".join(f"<code>{escape_html(str(item))}</code>" for item in items)
+
+
+def render_code_value(value: object, *, empty: str) -> str:
+    if value is None:
+        return escape_html(empty)
+    return f"<code>{escape_html(str(value))}</code>"
+
+
+def render_resource_links(resources: list[object]) -> str:
+    if not resources:
+        return "无"
+    return ", ".join(
+        f'<a href="../resources/#{escape_html(str(resource).lower())}">'
+        f"<code>{escape_html(str(resource))}</code></a>"
+        for resource in resources
     )
 
 

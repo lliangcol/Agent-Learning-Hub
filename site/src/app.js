@@ -7,6 +7,14 @@
   let migrationData;
   let pendingImport;
 
+  const appScriptUrl =
+    document.currentScript?.src ||
+    [...document.scripts].find(
+      (script) =>
+        script.src.endsWith("/src/app.js") ||
+        script.src.endsWith("/assets/custom/app.min.js"),
+    )?.src;
+
   async function fetchJson(path) {
     const response = await fetch(path, { credentials: "same-origin" });
     if (!response.ok) throw new Error(`数据加载失败：${response.status}`);
@@ -14,8 +22,16 @@
   }
 
   function dataUrl(name) {
-    const appScript = [...document.scripts].find((script) => script.src.endsWith("/src/app.js"));
-    return new URL(`../generated/data/${name}`, appScript?.src || document.baseURI).href;
+    if (!appScriptUrl) return new URL(`generated/data/${name}`, document.baseURI).href;
+
+    const url = new URL(appScriptUrl);
+    const suffix = url.pathname.endsWith("/assets/custom/app.min.js")
+      ? "/assets/custom/app.min.js"
+      : "/src/app.js";
+    url.pathname = `${url.pathname.slice(0, -suffix.length)}/generated/data/${name}`;
+    url.search = "";
+    url.hash = "";
+    return url.href;
   }
 
   function ids() {
@@ -52,7 +68,7 @@
         input.addEventListener("change", () => {
           const current = ALHProgress.loadProgress();
           current.project_progress[input.dataset.projectId] = ALHProgress.record(
-            input.checked ? "complete" : "not_started",
+            input.checked ? "concept_verified" : "not_started",
           );
           ALHProgress.saveProgress(current);
           renderSummaries(current);
@@ -121,6 +137,8 @@
         error.textContent = "";
         panel.querySelector("[data-progress-rollback-status]").textContent =
           `已恢复备份 ${key}。`;
+        const noteInput = document.querySelector("[data-note-input]");
+        if (noteInput) noteInput.value = ALHNotes.loadNote();
         renderProgress();
       } catch (caught) {
         error.textContent = caught instanceof Error ? caught.message : "恢复失败。";
@@ -161,7 +179,9 @@
     picker.disabled = false;
     panel.querySelector("[data-import-confirm]").addEventListener("click", () => {
       if (!pendingImport) return;
-      ALHProgress.atomicReplace(pendingImport.output);
+      ALHProgress.atomicReplace(pendingImport.output, localStorage, pendingImport.auxiliary);
+      const noteInput = document.querySelector("[data-note-input]");
+      if (noteInput) noteInput.value = ALHNotes.loadNote();
       pendingImport = null;
       preview.hidden = true;
       renderProgress();

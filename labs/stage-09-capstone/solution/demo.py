@@ -7,31 +7,23 @@ import json
 from pathlib import Path
 from typing import Any
 
-from checklist import validate_manifest
+from checklist import run_research_case, validate_manifest
 
 
 def run_cases(cases: list[dict[str, Any]]) -> dict[str, Any]:
     outcomes = []
-    expected = {
-        "cited_query": ("complete", "cited_answer"),
-        "no_source": ("no_sources", "stopped"),
-        "denied_external": ("permission_denied", "stopped"),
-        "secret_input": ("sensitive_input_rejected", "stopped"),
-        "malformed": ("invalid_input", "stopped"),
-    }
     for case in cases:
-        stop_reason, status = expected.get(str(case.get("scenario")), ("unknown_case", "failed"))
-        outcomes.append(
-            {
-                "id": case.get("id", "missing-id"),
-                "status": status,
-                "stop_reason": stop_reason,
-                "citations": ["SYNTHETIC-01"] if status == "cited_answer" else [],
-            }
+        observed = run_research_case(case)
+        expected = case.get("expected")
+        passed = isinstance(expected, dict) and all(
+            observed.get(key) == value for key, value in expected.items()
         )
+        if observed["status"] == "cited_answer" and not observed["citations"]:
+            passed = False
+        outcomes.append({"id": case.get("id", "missing-id"), **observed, "passed": passed})
     return {
         "total": len(outcomes),
-        "passed": sum(outcome["status"] != "failed" for outcome in outcomes),
+        "passed": sum(bool(outcome["passed"]) for outcome in outcomes),
         "outcomes": outcomes,
         "external_side_effects": 0,
     }

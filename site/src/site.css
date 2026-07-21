@@ -50,11 +50,45 @@
 
 .progress-item {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
   gap: 0.65rem;
   padding: 0.65rem 0.8rem;
   border: 1px solid var(--md-default-fg-color--lightest);
   border-radius: 0.45rem;
+}
+
+.progress-item > label {
+  flex: 1 1 20rem;
+}
+
+.acceptance-details {
+  flex: 0 0 100%;
+  margin-inline-start: 1.9rem;
+}
+
+.acceptance-details dl {
+  display: grid;
+  grid-template-columns: minmax(6rem, auto) 1fr;
+  gap: 0.35rem 0.8rem;
+}
+
+.acceptance-details dt {
+  font-weight: 700;
+}
+
+.acceptance-details dd {
+  margin: 0;
+}
+
+@media (max-width: 40rem) {
+  .acceptance-details {
+    margin-inline-start: 0;
+  }
+
+  .acceptance-details dl {
+    grid-template-columns: 1fr;
+  }
 }
 
 .progress-item input {

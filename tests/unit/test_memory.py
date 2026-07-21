@@ -1,5 +1,8 @@
+import shutil
 import sqlite3
+import subprocess
 from datetime import UTC, datetime, timedelta
+from pathlib import Path
 
 import pytest
 
@@ -79,3 +82,47 @@ def test_sqlite_memory_validates_empty_and_explicit_secret_records(tmp_path) -> 
         store.write("", "content", source="fixture")
     with pytest.raises(ValueError, match="不得写入"):
         store.write("key", "harmless", source="fixture", sensitivity="secret")
+
+
+def test_memory_rejects_non_positive_ttl_and_secrets_in_all_persisted_fields(tmp_path) -> None:
+    store = SQLiteMemory(tmp_path / "memory.sqlite3", allow_persistence=True)
+    with pytest.raises(ValueError, match="positive integer"):
+        store.write("key", "content", source="fixture", ttl_seconds=0)
+    with pytest.raises(ValueError, match="不得写入"):
+        store.write("api_key=synthetic-placeholder", "content", source="fixture")
+    with pytest.raises(ValueError, match="不得写入"):
+        store.write("key", "content", source="token=synthetic-placeholder")
+    record = store.write("private", "content", source="fixture", sensitivity="private")
+    assert record.sensitivity == "private"
+
+
+def test_memory_connections_do_not_keep_database_locked(tmp_path) -> None:
+    path = tmp_path / "memory.sqlite3"
+    store = SQLiteMemory(path, allow_persistence=True)
+    store.write("key", "content", source="fixture")
+    store.export_json()
+    path.unlink()
+    assert not path.exists()
+
+
+def test_memory_database_and_backup_names_are_ignored() -> None:
+    root = Path(__file__).parents[2]
+    git = shutil.which("git")
+    assert git is not None
+    completed = subprocess.run(  # noqa: S603 - resolved Git binary, fixed arguments
+        [
+            git,
+            "check-ignore",
+            "--no-index",
+            "memory.sqlite3",
+            "learner.memory.sqlite3.bak",
+            "memory.sqlite3-wal",
+            "memory.sqlite3-shm",
+        ],
+        cwd=root,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    assert completed.returncode == 0
+    assert len(completed.stdout.splitlines()) == 4

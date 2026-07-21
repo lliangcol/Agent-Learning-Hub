@@ -19,7 +19,10 @@ def measurements() -> dict[str, int]:
     if not SITE.is_dir():
         raise FileNotFoundError("site-build does not exist; run mkdocs build first")
     files = [path for path in SITE.rglob("*") if path.is_file()]
-    custom_javascript = list((SITE / "src").rglob("*.js"))
+    custom_javascript = [
+        *list((SITE / "src").rglob("*.js")),
+        *list((SITE / "assets" / "custom").rglob("*.js")),
+    ]
     vendored_javascript = list((SITE / "assets" / "vendor").rglob("*.js"))
     return {
         "site_bytes": total_size(files),

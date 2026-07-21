@@ -52,25 +52,38 @@ class AgentRunner:
         started = time.monotonic()
         for step in range(1, self.max_steps + 1):
             state.step = step
-            if time.monotonic() - started >= self.total_deadline:
+            remaining = self.total_deadline - (time.monotonic() - started)
+            if remaining <= 0:
                 return AgentRunResult(StopReason.DEADLINE, None, state, trace)
             call_started = time.monotonic()
             try:
                 response = self.provider.respond(
                     state.messages,
                     self.registry.specs,
-                    timeout=self.provider_timeout,
+                    timeout=min(self.provider_timeout, remaining),
                 )
             except Exception:
+                deadline_exceeded = time.monotonic() - started >= self.total_deadline
                 trace.add(
                     StepTrace(
                         step,
-                        "provider_error",
+                        "provider_deadline" if deadline_exceeded else "provider_error",
                         _elapsed_ms(call_started),
-                        error_code="provider_failed",
+                        error_code="timeout" if deadline_exceeded else "provider_failed",
                     )
                 )
-                return AgentRunResult(StopReason.PROVIDER_ERROR, None, state, trace)
+                reason = StopReason.DEADLINE if deadline_exceeded else StopReason.PROVIDER_ERROR
+                return AgentRunResult(reason, None, state, trace)
+            if time.monotonic() - started >= self.total_deadline:
+                trace.add(
+                    StepTrace(
+                        step,
+                        "provider_deadline",
+                        _elapsed_ms(call_started),
+                        error_code="timeout",
+                    )
+                )
+                return AgentRunResult(StopReason.DEADLINE, None, state, trace)
             trace.add(StepTrace(step, f"provider_{response.kind}", _elapsed_ms(call_started)))
             if response.kind == "text" and response.text is not None:
                 state.messages.append(Message("assistant", response.text))
@@ -87,24 +100,40 @@ class AgentRunner:
                 return AgentRunResult(StopReason.REPEATED_CALL, None, state, trace)
             state.tool_calls += 1
             tool_started = time.monotonic()
-            executor = ThreadPoolExecutor(max_workers=1)
-            future = executor.submit(self.registry.run, response.tool_name, response.tool_arguments)
-            try:
-                tool_result = future.result(timeout=self.tool_timeout)
-            except TimeoutError:
-                future.cancel()
+            remaining = self.total_deadline - (time.monotonic() - started)
+            if remaining <= 0:
+                return AgentRunResult(StopReason.DEADLINE, None, state, trace)
+            with ThreadPoolExecutor(max_workers=1) as executor:
+                future = executor.submit(
+                    self.registry.run, response.tool_name, response.tool_arguments
+                )
+                try:
+                    tool_result = future.result(timeout=min(self.tool_timeout, remaining))
+                except TimeoutError:
+                    future.cancel()
+                    trace.add(
+                        StepTrace(
+                            step,
+                            "tool_timeout",
+                            _elapsed_ms(tool_started),
+                            response.tool_name,
+                            "timeout",
+                        )
+                    )
+                    # Python cannot terminate a running thread safely. Waiting here guarantees
+                    # that no tool code continues after the runner reports the deadline.
+                    return AgentRunResult(StopReason.DEADLINE, None, state, trace)
+            if time.monotonic() - started >= self.total_deadline:
                 trace.add(
                     StepTrace(
                         step,
-                        "tool_timeout",
+                        "tool_deadline",
                         _elapsed_ms(tool_started),
                         response.tool_name,
                         "timeout",
                     )
                 )
                 return AgentRunResult(StopReason.DEADLINE, None, state, trace)
-            finally:
-                executor.shutdown(wait=False, cancel_futures=True)
             trace.add(
                 StepTrace(
                     step,

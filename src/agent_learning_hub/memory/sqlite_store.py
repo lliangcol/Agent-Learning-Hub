@@ -4,6 +4,8 @@ import json
 import re
 import shutil
 import sqlite3
+from collections.abc import Iterator
+from contextlib import contextmanager
 from dataclasses import asdict, dataclass
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
@@ -39,9 +41,18 @@ class SQLiteMemory:
         connection.row_factory = sqlite3.Row
         return connection
 
+    @contextmanager
+    def _connection(self) -> Iterator[sqlite3.Connection]:
+        connection = self._connect()
+        try:
+            with connection:
+                yield connection
+        finally:
+            connection.close()
+
     def _prepare_schema(self) -> None:
         existed = self.path.exists()
-        with self._connect() as connection:
+        with self._connection() as connection:
             connection.execute(
                 "CREATE TABLE IF NOT EXISTS metadata (key TEXT PRIMARY KEY, value TEXT NOT NULL)"
             )
@@ -53,7 +64,7 @@ class SQLiteMemory:
             raise RuntimeError(f"不兼容的记忆 schema 版本：{version}")
         if existed and version < SCHEMA_VERSION:
             shutil.copy2(self.path, self.path.with_suffix(self.path.suffix + ".bak"))
-        with self._connect() as connection:
+        with self._connection() as connection:
             connection.execute(
                 """
                 CREATE TABLE IF NOT EXISTS memories (
@@ -85,11 +96,17 @@ class SQLiteMemory:
     ) -> MemoryRecord:
         if not key.strip() or not content.strip():
             raise ValueError("key and content must not be empty")
-        if sensitivity == "secret" or _SENSITIVE_PATTERN.search(content):
+        if ttl_seconds is not None and (
+            isinstance(ttl_seconds, bool) or not isinstance(ttl_seconds, int) or ttl_seconds <= 0
+        ):
+            raise ValueError("ttl_seconds must be a positive integer")
+        if sensitivity == "secret" or _SENSITIVE_PATTERN.search("\n".join((key, content, source))):
             raise ValueError("秘密、凭据和验证码不得写入长期记忆。")
+        if sensitivity not in {"normal", "private"}:
+            raise ValueError("sensitivity must be normal or private")
         timestamp = (now or datetime.now(UTC)).astimezone(UTC)
         expires = timestamp + timedelta(seconds=ttl_seconds) if ttl_seconds is not None else None
-        with self._connect() as connection:
+        with self._connection() as connection:
             existing = connection.execute(
                 "SELECT created_at, record_version FROM memories WHERE key = ?", (key,)
             ).fetchone()
@@ -120,11 +137,14 @@ class SQLiteMemory:
                     sensitivity,
                 ),
             )
-        return self.get(key, now=timestamp)  # type: ignore[return-value]
+        record = self.get(key, now=timestamp)
+        if record is None:
+            raise RuntimeError("persisted memory record could not be read back")
+        return record
 
     def get(self, key: str, *, now: datetime | None = None) -> MemoryRecord | None:
         timestamp = (now or datetime.now(UTC)).astimezone(UTC)
-        with self._connect() as connection:
+        with self._connection() as connection:
             row = connection.execute("SELECT * FROM memories WHERE key = ?", (key,)).fetchone()
         if row is None:
             return None
@@ -135,7 +155,7 @@ class SQLiteMemory:
 
     def search(self, query: str, *, now: datetime | None = None) -> list[MemoryRecord]:
         timestamp = (now or datetime.now(UTC)).astimezone(UTC)
-        with self._connect() as connection:
+        with self._connection() as connection:
             rows = connection.execute(
                 """
                 SELECT * FROM memories
@@ -152,19 +172,19 @@ class SQLiteMemory:
         ]
 
     def delete(self, key: str) -> bool:
-        with self._connect() as connection:
+        with self._connection() as connection:
             cursor = connection.execute("DELETE FROM memories WHERE key = ?", (key,))
         return cursor.rowcount > 0
 
     def clear(self) -> int:
-        with self._connect() as connection:
+        with self._connection() as connection:
             count = int(connection.execute("SELECT COUNT(*) FROM memories").fetchone()[0])
             connection.execute("DELETE FROM memories")
         return count
 
     def export_json(self, *, now: datetime | None = None) -> str:
         timestamp = (now or datetime.now(UTC)).astimezone(UTC)
-        with self._connect() as connection:
+        with self._connection() as connection:
             rows = connection.execute("SELECT * FROM memories ORDER BY key").fetchall()
         records = [
             asdict(record)

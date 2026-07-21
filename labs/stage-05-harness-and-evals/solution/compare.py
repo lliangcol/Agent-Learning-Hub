@@ -6,7 +6,7 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
-from agent_learning_hub.core import AgentRunner, ProviderResponse, StopReason
+from agent_learning_hub.core import AgentRunner, Message, ProviderResponse, StopReason
 from agent_learning_hub.providers import SequenceProvider
 from agent_learning_hub.tools import ToolRegistry, ToolResult, ToolSpec, ToolStatus
 
@@ -44,7 +44,7 @@ def _tool(status: ToolStatus, *, read_only: bool = True) -> ToolSpec:
     )
 
 
-def _typed_runner(scenario: str) -> AgentRunner:
+def _scenario_components(scenario: str) -> tuple[object, ToolRegistry, dict[str, Any]]:
     registry = ToolRegistry([_tool(ToolStatus.OK)])
     options: dict[str, Any] = {}
     if scenario == "success":
@@ -79,7 +79,12 @@ def _typed_runner(scenario: str) -> AgentRunner:
         options["tool_budget"] = 0
     else:
         raise ValueError(f"unsupported scenario: {scenario}")
-    return AgentRunner(provider, registry, **options)
+    return provider, registry, options
+
+
+def _typed_runner(scenario: str) -> AgentRunner:
+    provider, registry, options = _scenario_components(scenario)
+    return AgentRunner(provider, registry, **options)  # type: ignore[arg-type]
 
 
 def _tool_statuses(result) -> list[str]:  # type: ignore[no-untyped-def]
@@ -115,16 +120,62 @@ def _run_typed_case(case: dict[str, Any]) -> dict[str, Any]:
 
 def _run_bare_case(case: dict[str, Any]) -> dict[str, Any]:
     scenario = str(case["scenario"])
-    passed = scenario == "success"
+    provider, registry, _ = _scenario_components(scenario)
+    messages = [
+        Message("system", "bare deterministic loop"),
+        Message("user", "run the same deterministic fixture task"),
+    ]
+    started = time.perf_counter()
+    tool_statuses: list[str] = []
+    errors: list[str] = []
+    stop_reason = StopReason.MAX_STEPS
+    steps = 0
+    tool_calls = 0
+    for step in range(1, 4):
+        steps = step
+        try:
+            response = provider.respond(messages, registry.specs, timeout=1)  # type: ignore[attr-defined]
+        except Exception:
+            stop_reason = StopReason.PROVIDER_ERROR
+            errors.append("provider_failed")
+            break
+        if response.kind == "text":
+            stop_reason = StopReason.COMPLETED
+            break
+        if response.kind != "tool_call" or response.tool_name is None:
+            stop_reason = StopReason.UNKNOWN_RESPONSE
+            break
+        tool_calls += 1
+        result = registry.run(response.tool_name, response.tool_arguments)
+        tool_statuses.append(result.status.value)
+        if result.error_code:
+            errors.append(result.error_code)
+        messages.extend(
+            [
+                Message(
+                    "assistant",
+                    {
+                        "type": "tool_call",
+                        "name": response.tool_name,
+                        "arguments": response.tool_arguments,
+                    },
+                ),
+                Message("tool", result.as_dict(), name=response.tool_name),
+            ]
+        )
+    expected_status = _EXPECTED_TOOL_STATUSES.get(scenario)
+    passed = stop_reason is _EXPECTED_STOPS[scenario] and (
+        expected_status is None or expected_status in tool_statuses
+    )
     return {
         "id": case["id"],
         "scenario": scenario,
         "passed": passed,
-        "stop_reason": "completed" if passed else "unsupported_scenario",
-        "steps": 1,
-        "tool_calls": 0,
-        "latency_ms": 0.0,
-        "errors": [] if passed else ["unhandled_scenario"],
+        "stop_reason": stop_reason.value,
+        "steps": steps,
+        "tool_calls": tool_calls,
+        "latency_ms": round((time.perf_counter() - started) * 1000, 3),
+        "errors": errors,
         "cost": None,
     }
 

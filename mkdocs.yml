@@ -63,11 +63,12 @@ extra_css:
 extra_javascript:
   - assets/vendor/marked.js
   - assets/vendor/purify.min.js
-  - src/progress.js
-  - src/notes.js
-  - src/app.js
+  - assets/custom/progress.min.js
+  - assets/custom/notes.min.js
+  - assets/custom/app.min.js
 
 exclude_docs: |
   overrides/
+  src/*.js
   src/*.test.js
   **/__pycache__/**

@@ -63,7 +63,9 @@ class _SafeEvaluator:
             return self._bounded(_BINARY_OPERATORS[type(node.op)](left, right))
         raise ValueError("unsupported_syntax")
 
-    def _bounded(self, value: int | float) -> int | float:
+    def _bounded(self, value: object) -> int | float:
+        if isinstance(value, bool) or not isinstance(value, (int, float)):
+            raise ValueError("non_real_result")
         if isinstance(value, float) and not math.isfinite(value):
             raise ValueError("non_finite_result")
         if abs(value) > self.max_abs_value:

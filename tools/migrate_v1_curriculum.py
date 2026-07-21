@@ -39,6 +39,13 @@ OLD_TO_NEW: dict[tuple[int, int], str] = {
     **{(7, index): f"S04-T{index + 2:02d}" for index in range(1, 7)},
     **{(8, index): f"S09-T{index:02d}" for index in range(1, 6)},
 }
+CHECKED_STATE_BY_TASK = {
+    "S03-T01": "needs_revalidation",
+    "S04-T01": "validation_failed",
+    "S03-T02": "lab_verified_offline",
+    "S04-T02": "learning",
+    "S03-T03": "not_started",
+}
 PROJECT_TRACKS = [
     "基础工具",
     "研究与 RAG",
@@ -266,6 +273,7 @@ def main() -> None:
         ROOT / "curriculum" / "migrations" / "v1-to-v2.yaml",
         {
             "schema_version": "1.0.0",
+            "checked_state_by_task": CHECKED_STATE_BY_TASK,
             "task_mappings": [
                 {"old_id": raw["old_id"], "new_id": raw["new_id"], "was_checked": raw["checked"]}
                 for raw in raw_tasks

@@ -30,6 +30,25 @@ def test_manifest_paths_directions_and_secret_like_values_are_validated(tmp_path
     assert "invalid:eval_dataset_path" in issues
     assert "secret_like_value" in issues
 
+    manifest = json.loads((root / "fixtures" / "manifest.json").read_text(encoding="utf-8"))
+    manifest["api_key"] = "synthetic-placeholder"
+    manifest["eval_dataset"] = ["fixtures/evals.json"]
+    issues = MODULE.validate_manifest(manifest, root)
+    assert "unknown:api_key" in issues
+    assert "secret_like_value" in issues
+    assert "invalid_type:eval_dataset" in issues
+
+
+def test_research_behavior_is_derived_from_inputs_not_scenario_labels() -> None:
+    denied = MODULE.run_research_case(
+        {"scenario": "cited_query", "query": "external lookup", "request_external": True}
+    )
+    assert denied["stop_reason"] == "permission_denied"
+    no_source = MODULE.run_research_case(
+        {"scenario": "secret_input", "query": "ordinary unanswered question", "sources": []}
+    )
+    assert no_source["stop_reason"] == "no_sources"
+
 
 def test_local_capstone_cli_runs_fixed_eval_set_without_side_effects() -> None:
     root = Path(__file__).parents[1]

@@ -11,8 +11,8 @@ describe("V1 migration export", () => {
     localStorage.setItem("note-stage0", "<script>alert(1)</script>");
     localStorage.setItem("agent-learning-theme", "dark");
     localStorage.setItem("unrelated", "do-not-export");
-    const { collectLegacyData } = await import("../../site/src/legacy-migration.js");
-    const payload = collectLegacyData(localStorage);
+    await import("../../site/src/legacy-migration.js");
+    const payload = ALHLegacyMigration.collectLegacyData(localStorage);
     expect(payload.state).toContain("stage0-0");
     expect(payload.notes["note-stage0"]).toContain("<script>");
     expect(payload.theme).toBe("dark");

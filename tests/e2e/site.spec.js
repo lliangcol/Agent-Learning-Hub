@@ -1,5 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
+import { resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 
 test("static course remains readable and progress namespaces are separate", async ({ page }) => {
   await page.goto("generated/roadmap/");
@@ -10,6 +12,11 @@ test("static course remains readable and progress namespaces are separate", asyn
   await page.goto("generated/projects/");
   await page.locator('[data-project-id="P01"]').check();
   await expect(page.getByText(/课程 1\/50；可选项目 1\/11/)).toBeVisible();
+  expect(
+    await page.evaluate(() =>
+      JSON.parse(localStorage.getItem("agent-learning-hub-progress-v2"))
+        .project_progress.P01.state),
+  ).toBe("concept_verified");
   await page.reload();
   await expect(page.locator('[data-project-id="P01"]')).toBeChecked();
 });
@@ -37,19 +44,48 @@ test("V1 import previews, reconciles, replaces once and rolls back", async ({ pa
         schema_version: "1.0.0",
         origin: "https://legacy.invalid",
         state: JSON.stringify({ "stage0-0": true, "ladder-1": true }),
+        notes: { "note-stage0": "legacy note" },
+        theme: "dark",
       }),
     ),
   });
   await expect(page.locator("[data-import-preview]")).toBeVisible();
   await expect(page.locator("[data-import-report]")).toContainText('"reconciled": true');
   await page.locator("[data-import-confirm]").click();
+  expect(
+    await page.evaluate(() => localStorage.getItem("agent-learning-hub-notes-v2")),
+  ).toContain("legacy note");
+  expect(await page.evaluate(() => localStorage.getItem("agent-learning-theme"))).toBe("dark");
   await page.goto("generated/roadmap/");
   await expect(page.locator('[data-task-id="S00-T01"]')).toBeChecked();
   await page.goto("pages/workbook/");
   await page.locator("[data-progress-rollback]").click();
   await expect(page.locator("[data-progress-rollback-status]")).toContainText("已恢复备份");
+  expect(await page.evaluate(() => localStorage.getItem("agent-learning-hub-notes-v2"))).toBeNull();
+  expect(await page.evaluate(() => localStorage.getItem("agent-learning-theme"))).toBeNull();
   await page.goto("generated/roadmap/");
   await expect(page.locator('[data-task-id="S00-T01"]')).not.toBeChecked();
+});
+
+test("legacy file entry initializes without module CORS", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop", "one deterministic file-origin check is enough");
+  const consoleErrors = [];
+  page.on("console", (message) => {
+    if (message.type() === "error") consoleErrors.push(message.text());
+  });
+  await page.goto(pathToFileURL(resolve("index.html")).href);
+  await expect(page.locator("#origin")).toHaveText("当前 origin：file://");
+  await expect(page.locator("#summary")).not.toBeEmpty();
+  expect(consoleErrors).toEqual([]);
+});
+
+test("course pages expose clickable resources and acceptance details", async ({ page }) => {
+  await page.goto("generated/roadmap/");
+  const task = page.locator("#s00-t04");
+  await expect(task.getByRole("link", { name: "Anthropic: Building effective agents" })).toBeVisible();
+  await task.getByText("查看前置条件与验收").click();
+  await expect(task.getByText("Rubric")).toBeVisible();
+  await expect(task.locator("dt").filter({ hasText: /^验证命令$/ })).toBeVisible();
 });
 
 test("search text cannot inject DOM", async ({ page }) => {
@@ -93,7 +129,7 @@ test("core curriculum remains readable without JavaScript", async ({ browser }, 
   const page = await context.newPage();
   await page.goto("http://127.0.0.1:8123/Agent-Learning-Hub/generated/roadmap/");
   await expect(page.getByRole("heading", { name: "课程路线" })).toBeVisible();
-  await expect(page.getByText("S00-T01")).toBeVisible();
+  await expect(page.locator("#s00-t01")).toContainText("S00-T01");
   await context.close();
 });
 

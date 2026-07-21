@@ -4,8 +4,8 @@
   "required": ["schema_version", "roadmap_version", "updated_at", "task_progress", "project_progress"],
   "additionalProperties": false,
   "properties": {
-    "schema_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
-    "roadmap_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "schema_version": { "const": "2.0.0" },
+    "roadmap_version": { "const": "2.0.0" },
     "updated_at": { "type": "string", "format": "date-time" },
     "origin": { "type": ["string", "null"] },
     "task_progress": { "type": "object", "additionalProperties": { "$ref": "#/$defs/progressRecord" } },
@@ -16,6 +16,12 @@
       "type": "object",
       "required": ["state", "updated_at", "evidence_paths", "review", "environment", "next_anchor"],
       "additionalProperties": false,
+      "allOf": [
+        {
+          "if": { "properties": { "state": { "const": "complete" } }, "required": ["state"] },
+          "then": { "properties": { "evidence_paths": { "minItems": 1 } } }
+        }
+      ],
       "properties": {
         "state": { "enum": ["not_started", "learning", "concept_verified", "lab_verified_offline", "lab_verified_live", "complete", "blocked", "needs_revalidation", "validation_failed"] },
         "updated_at": { "type": "string", "format": "date-time" },

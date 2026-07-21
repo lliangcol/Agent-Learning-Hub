@@ -1,3 +1,6 @@
+import time
+from concurrent.futures import ThreadPoolExecutor
+
 import pytest
 
 from agent_learning_hub.policies import PermissionPolicy, RetryPolicy, run_with_retry
@@ -103,6 +106,56 @@ def test_registry_caches_reads_and_deduplicates_side_effects() -> None:
         "write", {"value": "b"}, allow_side_effects=True, idempotency_key="operation-1"
     )
     assert conflict.error_code == "idempotency_conflict"
+
+
+def test_registry_deduplicates_concurrent_side_effects() -> None:
+    calls = 0
+
+    def write(value: str) -> ToolResult:
+        nonlocal calls
+        calls += 1
+        time.sleep(0.03)
+        return ToolResult(ToolStatus.OK, {"value": value})
+
+    registry = ToolRegistry(
+        [ToolSpec("write", "write", {"type": "object"}, write, read_only=False)]
+    )
+
+    def invoke() -> ToolResult:
+        return registry.run(
+            "write", {"value": "a"}, allow_side_effects=True, idempotency_key="same"
+        )
+
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        first = executor.submit(invoke)
+        second = executor.submit(invoke)
+        assert first.result().status is ToolStatus.OK
+        assert second.result().status is ToolStatus.OK
+    assert calls == 1
+
+
+def test_retryable_side_effect_result_is_not_cached() -> None:
+    calls = 0
+
+    def write() -> ToolResult:
+        nonlocal calls
+        calls += 1
+        if calls == 1:
+            return ToolResult(ToolStatus.RETRYABLE_ERROR, error_code="temporary")
+        return ToolResult(ToolStatus.OK)
+
+    registry = ToolRegistry(
+        [ToolSpec("write", "write", {"type": "object"}, write, read_only=False)]
+    )
+    result = run_with_retry(
+        lambda: registry.run(
+            "write", {}, allow_side_effects=True, idempotency_key="retryable-operation"
+        ),
+        RetryPolicy(max_attempts=2, base_delay=0, jitter=0),
+        sleep=lambda _: None,
+    )
+    assert result.status is ToolStatus.OK
+    assert calls == 2
 
 
 def test_workspace_file_tools_block_traversal_and_require_overwrite_policy(tmp_path) -> None:

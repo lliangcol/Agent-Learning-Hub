@@ -1,7 +1,38 @@
 [
-  {"id": "C01", "scenario": "cited_query"},
-  {"id": "C02", "scenario": "no_source"},
-  {"id": "C03", "scenario": "denied_external"},
-  {"id": "C04", "scenario": "secret_input"},
-  {"id": "C05", "scenario": "malformed"}
+  {
+    "id": "C01",
+    "scenario": "cited_query",
+    "query": "Which mode keeps the research assistant offline?",
+    "sources": [{"id": "SYNTHETIC-01", "text": "Offline mode keeps the research assistant local."}],
+    "expected": {"stop_reason": "complete", "status": "cited_answer"}
+  },
+  {
+    "id": "C02",
+    "scenario": "no_source",
+    "query": "Where is the deployment evidence?",
+    "sources": [],
+    "expected": {"stop_reason": "no_sources", "status": "stopped"}
+  },
+  {
+    "id": "C03",
+    "scenario": "denied_external",
+    "query": "Search an external production system",
+    "request_external": true,
+    "sources": [],
+    "expected": {"stop_reason": "permission_denied", "status": "stopped"}
+  },
+  {
+    "id": "C04",
+    "scenario": "secret_input",
+    "query": "token=synthetic-placeholder",
+    "sources": [],
+    "expected": {"stop_reason": "sensitive_input_rejected", "status": "stopped"}
+  },
+  {
+    "id": "C05",
+    "scenario": "malformed",
+    "query": 42,
+    "sources": [],
+    "expected": {"stop_reason": "invalid_input", "status": "stopped"}
+  }
 ]

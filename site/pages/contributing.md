@@ -9,4 +9,6 @@ description: 课程、资源、Lab、站点与安全贡献流程
 
 课程变更需要 schema、生成差异和语义 review；资源变更需要来源、许可证/访问说明和验证日期；Lab 变更需要测试、失败路径和安全限制；站点变更需要移动端、键盘、注入和可访问性验证。
 
-安全问题请使用 GitHub Private Vulnerability Reporting，不要公开个人笔记或真实凭据。
+安全问题请按照 [Security Policy](https://github.com/lliangcol/Agent-Learning-Hub/security/policy)
+通过维护者指定的私下渠道报告；当前未启用 GitHub Private Vulnerability Reporting。
+不要公开个人笔记或真实凭据。

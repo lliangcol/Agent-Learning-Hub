@@ -1,1 +1,5 @@
 blank_issues_enabled: false
+contact_links:
+  - name: 私下报告安全问题
+    url: https://github.com/lliangcol/Agent-Learning-Hub/security/policy
+    about: 请先阅读 Security Policy，并使用其中维护者确认的私下报告渠道。

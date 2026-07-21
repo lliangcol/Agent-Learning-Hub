@@ -1,4 +1,10 @@
 schema_version: 1.0.0
+checked_state_by_task:
+  S03-T01: needs_revalidation
+  S04-T01: validation_failed
+  S03-T02: lab_verified_offline
+  S04-T02: learning
+  S03-T03: not_started
 task_mappings:
 - old_id: V1-S0-T01
   new_id: S00-T01

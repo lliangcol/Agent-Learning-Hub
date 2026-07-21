@@ -14,13 +14,14 @@ from agent_learning_hub.progress import atomic_write_json, migrate_legacy_state
 ROOT = Path(__file__).parents[1]
 
 
-def mappings() -> tuple[dict[str, str], dict[str, str]]:
+def mappings() -> tuple[dict[str, str], dict[str, str], dict[str, str]]:
     value = yaml.safe_load(
         (ROOT / "curriculum" / "migrations" / "v1-to-v2.yaml").read_text(encoding="utf-8")
     )
     return (
         {item["old_id"]: item["new_id"] for item in value["task_mappings"]},
         {item["old_id"]: item["new_id"] for item in value["project_mappings"]},
+        value["checked_state_by_task"],
     )
 
 
@@ -76,8 +77,13 @@ def main() -> int:
         if args.repository_snapshot
         else json.loads(args.input.read_text(encoding="utf-8"))
     )
-    task_mapping, project_mapping = mappings()
-    migrated, report = migrate_legacy_state(legacy, task_mapping, project_mapping)
+    task_mapping, project_mapping, checked_state_by_task = mappings()
+    migrated, report = migrate_legacy_state(
+        legacy,
+        task_mapping,
+        project_mapping,
+        checked_state_by_task=checked_state_by_task,
+    )
     messages = validate_progress(migrated)
     if messages:
         print("\n".join(messages), file=sys.stderr)

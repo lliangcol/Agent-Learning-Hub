@@ -1,3 +1,5 @@
+import json
+
 import pytest
 
 from agent_learning_hub.tools import calculator
@@ -55,6 +57,13 @@ def test_safe_calculate_rejects_overflowing_intermediate_result() -> None:
     result = safe_calculate("1e100 * 10")
     assert not result.ok
     assert result.error_code in {"result_too_large", "non_finite_result"}
+
+
+def test_safe_calculate_rejects_complex_results_and_remains_json_serializable() -> None:
+    result = safe_calculate("(-1) ** 0.5")
+    assert not result.ok
+    assert result.error_code == "non_real_result"
+    assert json.loads(json.dumps(result.as_dict()))["status"] == "fatal_error"
 
 
 def test_safe_calculate_rejects_non_finite_literal_and_unsupported_operators() -> None:
